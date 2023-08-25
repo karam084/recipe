@@ -1,2 +1,3 @@
 # recipe
-Angular, and Dotnet core project
+ - Angular, and Dotnet core project
+ - Fetch Data
