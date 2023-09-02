@@ -1,0 +1,28 @@
+<h1 class=" text-center"> All Reciepes </h1>
+<div class="container text-center">
+    <table class="table ">
+      <thead>
+        <tr >
+          <th>Name</th>
+          <th>Ingredients</th>
+          <th>Steps</th>
+          <th>Image</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of recipe">
+          <td>{{ item.Name }}</td>
+          <td>{{ item.Ingredients }}</td>
+          <td>{{ item.Steps }}</td>
+          <td>{{ item.Image }}</td>
+          <td>
+            <button type="button" class="btn btn-danger">Danger</button>
+            <button type="button" class="btn btn-warning">Warning</button>
+          </td>
+        </tr>
+        
+      </tbody>
+    </table>
+</div>
+  
