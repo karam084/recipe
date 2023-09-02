@@ -1,16 +1,50 @@
-<p-table [value]="TableRecipes">
-  <ng-template pTemplate="header">
+<p-table [columns]="cols" [value]="TableRecipes"[paginator]="true" [rows]="10" [(first)]="first" sortMode="multiple" (sortFunction)="customSort($event)" [customSort]="true" [globalFilterFields]="['vin','year']" >
+      <ng-template pTemplate="caption">
+        List of Recipes
+        <div class="flex">
+          <span class="p-input-icon-left ml-auto">
+              <input pInputText type="text" (input)="dt.filterGlobal($event.target?.addEventListener)" placeholder="Search keyword" />
+          </span>
+      </div>
+    </ng-template>
+
+  <ng-template pTemplate="header" let-columns>
       <tr>
-          <th>Name</th>
-          <th>Description</th>
-          <th>Price</th>
+        <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+          {{col.header}}
+          <p-sortIcon [field]="col.field"></p-sortIcon>
+      </th>
       </tr>
-  </ng-template>
-  <ng-template pTemplate="body" let-recipe>
       <tr>
-          <td>{{recipe.name}} </td>
-          <td>{{recipe.description}}</td>
-          <td>{{recipe.price}}</td>
-      </tr>
+        <th>
+        </th>
+    </tr>
   </ng-template>
+  <ng-template pTemplate="body" let-rowData let-columns="columns">
+      <tr>
+        <td *ngFor="let col of cols">
+          {{rowData[col.field]}}
+  </td>
+ </tr>
+ </ng-template>
+ <ng-template pTemplate="footer" let-columns>
+  <tr>
+      <td *ngFor="let col of columns">
+      {{col.header}}
+      </td>
+  </tr>
+</ng-template>
+<ng-template pTemplate="summary">
+  There are {{TableRecipes.length}} TableRecipes
+</ng-template>
+<ng-template pTemplate="paginatorleft" let-state>
+  {{state.first}}
+  <button type="button" pButton icon="pi-refresh"></button>
+</ng-template>
+<ng-template pTemplate="paginatorright">
+  <button type="button" pButton icon="pi-cloud-upload"></button>
+</ng-template>
+<ng-template let-item pTemplate="paginatordropdownitem">
+  {{item.value}} - per page
+</ng-template>
 </p-table>
