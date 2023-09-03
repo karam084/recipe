@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ReciepeService } from 'src/app/Service/reciepe.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-recipe',
   templateUrl: './recipe.component.html',
@@ -8,7 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 })
 export class RecipeComponent {
 recipe: any;
-  constructor(private recipeService:ReciepeService ){}
+  constructor(private recipeService:ReciepeService ,private http: HttpClient){}
 
   ngOnInit() 
   {
