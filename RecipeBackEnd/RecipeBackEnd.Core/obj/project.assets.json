@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\InternShip\\FullStackRecipeNew\\RecipeBackEnd\\RecipeBackEnd.Core\\RecipeBackEnd.Core.csproj",
+      "projectUniqueName": "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.Core\\RecipeBackEnd.Core.csproj",
       "projectName": "RecipeBackEnd.Core",
-      "projectPath": "F:\\InternShip\\FullStackRecipeNew\\RecipeBackEnd\\RecipeBackEnd.Core\\RecipeBackEnd.Core.csproj",
+      "projectPath": "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.Core\\RecipeBackEnd.Core.csproj",
       "packagesPath": "C:\\Users\\Eng Mohamed Hamed\\.nuget\\packages\\",
-      "outputPath": "F:\\InternShip\\FullStackRecipeNew\\RecipeBackEnd\\RecipeBackEnd.Core\\obj\\",
+      "outputPath": "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.Core\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Eng Mohamed Hamed\\AppData\\Roaming\\NuGet\\NuGet.Config",

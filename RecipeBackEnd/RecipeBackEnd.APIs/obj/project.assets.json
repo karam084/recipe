@@ -3958,11 +3958,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\InternShip\\FullStackRecipeNew\\RecipeBackEnd\\RecipeBackEnd.APIs\\RecipeBackEnd.APIs.csproj",
+      "projectUniqueName": "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.APIs\\RecipeBackEnd.APIs.csproj",
       "projectName": "RecipeBackEnd.APIs",
-      "projectPath": "F:\\InternShip\\FullStackRecipeNew\\RecipeBackEnd\\RecipeBackEnd.APIs\\RecipeBackEnd.APIs.csproj",
+      "projectPath": "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.APIs\\RecipeBackEnd.APIs.csproj",
       "packagesPath": "C:\\Users\\Eng Mohamed Hamed\\.nuget\\packages\\",
-      "outputPath": "F:\\InternShip\\FullStackRecipeNew\\RecipeBackEnd\\RecipeBackEnd.APIs\\obj\\",
+      "outputPath": "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.APIs\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Eng Mohamed Hamed\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -3979,8 +3979,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "F:\\InternShip\\FullStackRecipeNew\\RecipeBackEnd\\RecipeBackEnd.Repository\\RecipeBackEnd.Repository.csproj": {
-              "projectPath": "F:\\InternShip\\FullStackRecipeNew\\RecipeBackEnd\\RecipeBackEnd.Repository\\RecipeBackEnd.Repository.csproj"
+            "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.Repository\\RecipeBackEnd.Repository.csproj": {
+              "projectPath": "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.Repository\\RecipeBackEnd.Repository.csproj"
             }
           }
         }

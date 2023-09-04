@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "J3eV8HD6NZ2WMTUchlE961+NauoWRXTjsTmd0zNhz26j8QDw3pqzplNXvjApOTx4cDUWZsJILDoHh37spVapxw==",
+  "dgSpecHash": "Nvravg0Cr6JgJd7YF3eTtQaR0HGZznESnfkpnLxpp2AZsHXSEiEFcRVCIaIrwVSPsBTc8j+wiXWRHnksxAZYwA==",
   "success": true,
-  "projectFilePath": "F:\\InternShip\\FullStackRecipeNew\\RecipeBackEnd\\RecipeBackEnd.APIs\\RecipeBackEnd.APIs.csproj",
+  "projectFilePath": "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.APIs\\RecipeBackEnd.APIs.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Eng Mohamed Hamed\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Eng Mohamed Hamed\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

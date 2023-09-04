@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\InternShip\\FullStackRecipeNew\\RecipeBackEnd\\RecipeBackEnd.Services\\RecipeBackEnd.Services.csproj": {}
+    "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.Services\\RecipeBackEnd.Services.csproj": {}
   },
   "projects": {
-    "F:\\InternShip\\FullStackRecipeNew\\RecipeBackEnd\\RecipeBackEnd.Services\\RecipeBackEnd.Services.csproj": {
+    "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.Services\\RecipeBackEnd.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\InternShip\\FullStackRecipeNew\\RecipeBackEnd\\RecipeBackEnd.Services\\RecipeBackEnd.Services.csproj",
+        "projectUniqueName": "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.Services\\RecipeBackEnd.Services.csproj",
         "projectName": "RecipeBackEnd.Services",
-        "projectPath": "F:\\InternShip\\FullStackRecipeNew\\RecipeBackEnd\\RecipeBackEnd.Services\\RecipeBackEnd.Services.csproj",
+        "projectPath": "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.Services\\RecipeBackEnd.Services.csproj",
         "packagesPath": "C:\\Users\\Eng Mohamed Hamed\\.nuget\\packages\\",
-        "outputPath": "F:\\InternShip\\FullStackRecipeNew\\RecipeBackEnd\\RecipeBackEnd.Services\\obj\\",
+        "outputPath": "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.Services\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Eng Mohamed Hamed\\AppData\\Roaming\\NuGet\\NuGet.Config",

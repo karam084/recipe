@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "goBniRQl896JcBRGLuqrGwInh/ZaECqM3l7nsHQ3WfVStUSvbhGMb/aTk+rQ76f+F0SnvoCdEA7dY32K6xpToQ==",
+  "dgSpecHash": "qjXk2gweaQp/TGjURn7HDiCCDaTZEdMyclfiVg9rMHHwiaf2wHXZbF6XfSG3hS7XZf46BdLMZX+fNKrNkAswyw==",
   "success": true,
-  "projectFilePath": "F:\\InternShip\\FullStackRecipeNew\\RecipeBackEnd\\RecipeBackEnd.Services\\RecipeBackEnd.Services.csproj",
+  "projectFilePath": "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.Services\\RecipeBackEnd.Services.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
