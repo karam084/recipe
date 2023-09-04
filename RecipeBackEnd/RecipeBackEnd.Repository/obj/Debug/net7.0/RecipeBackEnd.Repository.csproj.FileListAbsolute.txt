@@ -1,0 +1,15 @@
+F:\InternShip\FullStackRecipeNew\RecipeBackEnd\RecipeBackEnd.Repository\obj\Debug\net7.0\RecipeBackEnd.Repository.csproj.AssemblyReference.cache
+F:\InternShip\FullStackRecipeNew\RecipeBackEnd\RecipeBackEnd.Repository\obj\Debug\net7.0\RecipeBackEnd.Repository.GeneratedMSBuildEditorConfig.editorconfig
+F:\InternShip\FullStackRecipeNew\RecipeBackEnd\RecipeBackEnd.Repository\obj\Debug\net7.0\RecipeBackEnd.Repository.AssemblyInfoInputs.cache
+F:\InternShip\FullStackRecipeNew\RecipeBackEnd\RecipeBackEnd.Repository\obj\Debug\net7.0\RecipeBackEnd.Repository.AssemblyInfo.cs
+F:\InternShip\FullStackRecipeNew\RecipeBackEnd\RecipeBackEnd.Repository\obj\Debug\net7.0\RecipeBackEnd.Repository.csproj.CoreCompileInputs.cache
+F:\InternShip\FullStackRecipeNew\RecipeBackEnd\RecipeBackEnd.Repository\bin\Debug\net7.0\RecipeBackEnd.Repository.deps.json
+F:\InternShip\FullStackRecipeNew\RecipeBackEnd\RecipeBackEnd.Repository\bin\Debug\net7.0\RecipeBackEnd.Repository.dll
+F:\InternShip\FullStackRecipeNew\RecipeBackEnd\RecipeBackEnd.Repository\bin\Debug\net7.0\RecipeBackEnd.Repository.pdb
+F:\InternShip\FullStackRecipeNew\RecipeBackEnd\RecipeBackEnd.Repository\bin\Debug\net7.0\RecipeBackEnd.Core.dll
+F:\InternShip\FullStackRecipeNew\RecipeBackEnd\RecipeBackEnd.Repository\bin\Debug\net7.0\RecipeBackEnd.Core.pdb
+F:\InternShip\FullStackRecipeNew\RecipeBackEnd\RecipeBackEnd.Repository\obj\Debug\net7.0\RecipeBackEnd.Repository.csproj.CopyComplete
+F:\InternShip\FullStackRecipeNew\RecipeBackEnd\RecipeBackEnd.Repository\obj\Debug\net7.0\RecipeBackEnd.Repository.dll
+F:\InternShip\FullStackRecipeNew\RecipeBackEnd\RecipeBackEnd.Repository\obj\Debug\net7.0\refint\RecipeBackEnd.Repository.dll
+F:\InternShip\FullStackRecipeNew\RecipeBackEnd\RecipeBackEnd.Repository\obj\Debug\net7.0\RecipeBackEnd.Repository.pdb
+F:\InternShip\FullStackRecipeNew\RecipeBackEnd\RecipeBackEnd.Repository\obj\Debug\net7.0\ref\RecipeBackEnd.Repository.dll
