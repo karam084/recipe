@@ -5,13 +5,25 @@ import {environment } from 'src/Environments/environment';
   providedIn: 'root'
 })
 export class ReciepeService {
-  baseUrl = 'http://localhost:3000' ;
+  baseUrl = 'http://localhost:3000/recips' ;
   constructor(private http: HttpClient) {}
   getAllRecipes()
   {
-    return this.http.get(`${this.baseUrl}/recips`)
+    return this.http.get(`${this.baseUrl}`)
   }
-  AddRecipe()
-
-  
+  AddRecipe(model :any)
+  {
+    return this.http.post(this.baseUrl,model)
+  }
+  DeleteRecipe(id:number)
+  {
+    return this.http.delete(`${this.baseUrl}/${id}`)
+  }
+  GetRecipeById(id:number)
+  {
+    this.http.get(`${this.baseUrl}/${id}`)
+  }
+  UpdateRecipe(id:number,model:any){
+    return  this.http.put(`${this.baseUrl}/${id}`,model);
+  }
 }
