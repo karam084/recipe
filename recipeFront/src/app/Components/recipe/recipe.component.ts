@@ -1,20 +1,23 @@
 import { Component } from '@angular/core';
+import { Recipe } from 'src/app/Models/Recipe'; 
 import { ReciepeService } from 'src/app/Service/reciepe.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-recipe',
   templateUrl: './recipe.component.html',
   styleUrls: ['./recipe.component.css']
 })
 export class RecipeComponent {
-recipe: any;
-  constructor(private recipeService:ReciepeService ,private http: HttpClient){}
-
+  recipes: any;
+  constructor(private recipeService:ReciepeService){}
   ngOnInit() 
   {
-    this.recipeService.getAllRecipes().subscribe((response) => {
-      this.recipe = response;
-    });      
+       this.getAllRecipes();
   } 
+  getAllRecipes(){this.recipeService.getAllRecipes().subscribe((response:any) => {
+    this.recipes = response;
+  },
+  (error) => {
+    console.error('HTTP Error:', error);
+  }); } 
 }
