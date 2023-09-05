@@ -8,7 +8,7 @@ namespace RecipeBackEnd.APIs
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -19,20 +19,36 @@ namespace RecipeBackEnd.APIs
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-
-            #endregion
             builder.Services.AddDbContext<StoreContext>(Options =>
             {
                 Options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
             builder.Services.AddScoped<IRecipeBackEnd, RecipeImplement>();
 
+            #endregion
+
             var app = builder.Build();
 
-            
+            #region Update Database
+            using var Scope = app.Services.CreateScope();
+            var Services = Scope.ServiceProvider;
 
-            // Configure the HTTP request pipeline.
+            var LoggerFactory = Services.GetRequiredService<ILoggerFactory>();
+            try
+            {
+                var dbContext = Services.GetRequiredService<StoreContext>(); //Ask clr for create object
+                await dbContext.Database.MigrateAsync();  // Update Database
+            }
+            catch (Exception ex)
+            {
+                var logger = LoggerFactory.CreateLogger<Program>(); //work in program
+                logger.LogError(ex,"An Error Occoured During ");  // log error
+            }
+
+            #endregion
+
             #region Configures
+            // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();

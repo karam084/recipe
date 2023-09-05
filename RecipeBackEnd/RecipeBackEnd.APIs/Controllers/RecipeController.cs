@@ -40,7 +40,7 @@ namespace RecipeBackEnd.APIs.Controllers
 
         // PUT api/<RecipeController>/5
         [HttpPut("{id}")]
-        public IActionResult PutRecipe(int id, [FromBody] Recipe recipe)
+        public IActionResult EditeRecipe(int id, [FromBody] Recipe recipe)
         {
             return Ok(_recipeInterface.EditeRecipe(recipe));
         }
