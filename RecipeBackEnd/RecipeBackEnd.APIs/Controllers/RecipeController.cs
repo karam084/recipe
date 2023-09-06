@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using RecipeBackEnd.APIs.Dto;
 using RecipeBackEnd.Core.IRepo;
 using RecipeBackEnd.Core.Models;
 
@@ -9,14 +11,16 @@ namespace RecipeBackEnd.APIs.Controllers
     public class RecipeController : ControllerBase
     {
         private readonly IRecipeBackEnd _recipeInterface;
+        private readonly IMapper _mapper;
 
-        public RecipeController(IRecipeBackEnd recipeInterface)
+        public RecipeController(IRecipeBackEnd recipeInterface , IMapper mapper)
         {
             _recipeInterface = recipeInterface;
+            _mapper = mapper;
         }
         // GET: api/<RecipeController>
         [HttpGet]
-        public async Task<IActionResult> GetAllRecipe()
+        public async Task <IActionResult> GetAllRecipe()
         {
             return Ok(await _recipeInterface.GetAllRecipe());
         }
@@ -33,8 +37,9 @@ namespace RecipeBackEnd.APIs.Controllers
         public async Task<IActionResult> AddRecipe(Recipe recipe)
 
         {
+            
             await _recipeInterface.AddRecipe(recipe);
-            return Ok(recipe);
+            return Ok(_mapper.Map<Recipe,RecipeToReturnDto>(recipe));
 
         }
 
@@ -42,7 +47,9 @@ namespace RecipeBackEnd.APIs.Controllers
         [HttpPut("{id}")]
         public IActionResult EditeRecipe(int id, [FromBody] Recipe recipe)
         {
-            return Ok(_recipeInterface.EditeRecipe(recipe));
+            //return Ok(_recipeInterface.EditeRecipe(recipe));
+             _recipeInterface.EditeRecipe(recipe);
+            return Ok(_mapper.Map<Recipe,RecipeToReturnDto>(recipe));
         }
 
         // DELETE api/<RecipeController>/5

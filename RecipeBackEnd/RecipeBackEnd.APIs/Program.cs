@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using RecipeBackEnd.APIs.Dto.Helpers;
 using RecipeBackEnd.Core.IRepo;
 using RecipeBackEnd.Repository;
 using RecipeBackEnd.Repository.Data;
@@ -23,7 +24,9 @@ namespace RecipeBackEnd.APIs
                 Options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
             builder.Services.AddScoped<IRecipeBackEnd, RecipeImplement>();
+
             //builder.Services.AddAutoMapper(M=>M.AddProfile(new MappingProfiles()));
+            builder.Services.AddAutoMapper(typeof(MappingProfiles));
             #endregion
 
             var app = builder.Build();
