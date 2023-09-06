@@ -1,0 +1,49 @@
+{
+  "Files": [
+    {
+      "Id": "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.APIs\\wwwroot\\images\\five.jpeg",
+      "PackagePath": "staticwebassets\\images\\five.jpeg"
+    },
+    {
+      "Id": "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.APIs\\wwwroot\\images\\four.jpeg",
+      "PackagePath": "staticwebassets\\images\\four.jpeg"
+    },
+    {
+      "Id": "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.APIs\\wwwroot\\images\\one.jpeg",
+      "PackagePath": "staticwebassets\\images\\one.jpeg"
+    },
+    {
+      "Id": "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.APIs\\wwwroot\\images\\seven.jpeg",
+      "PackagePath": "staticwebassets\\images\\seven.jpeg"
+    },
+    {
+      "Id": "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.APIs\\wwwroot\\images\\sex.jpeg",
+      "PackagePath": "staticwebassets\\images\\sex.jpeg"
+    },
+    {
+      "Id": "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.APIs\\wwwroot\\images\\three.jpeg",
+      "PackagePath": "staticwebassets\\images\\three.jpeg"
+    },
+    {
+      "Id": "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.APIs\\wwwroot\\images\\two.jpeg",
+      "PackagePath": "staticwebassets\\images\\two.jpeg"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.RecipeBackEnd.APIs.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.RecipeBackEnd.APIs.props",
+      "PackagePath": "build\\RecipeBackEnd.APIs.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.RecipeBackEnd.APIs.props",
+      "PackagePath": "buildMultiTargeting\\RecipeBackEnd.APIs.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.RecipeBackEnd.APIs.props",
+      "PackagePath": "buildTransitive\\RecipeBackEnd.APIs.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

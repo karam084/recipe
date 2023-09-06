@@ -1,4 +1,3 @@
-
 using Microsoft.EntityFrameworkCore;
 using RecipeBackEnd.Core.IRepo;
 using RecipeBackEnd.Repository;
@@ -8,7 +7,7 @@ namespace RecipeBackEnd.APIs
 {
     public class Program
     {
-        public static async void Main(string[] args)
+        public  static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -24,7 +23,7 @@ namespace RecipeBackEnd.APIs
                 Options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
             builder.Services.AddScoped<IRecipeBackEnd, RecipeImplement>();
-
+            //builder.Services.AddAutoMapper(M=>M.AddProfile(new MappingProfiles()));
             #endregion
 
             var app = builder.Build();
@@ -37,7 +36,7 @@ namespace RecipeBackEnd.APIs
             try
             {
                 var dbContext = Services.GetRequiredService<StoreContext>(); //Ask clr for create object
-                await dbContext.Database.MigrateAsync();  // Update Database
+                 dbContext.Database.MigrateAsync();  // Update Database
             }
             catch (Exception ex)
             {
@@ -54,6 +53,8 @@ namespace RecipeBackEnd.APIs
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            app.UseStaticFiles();
 
             app.UseHttpsRedirection();
 

@@ -157,3 +157,6 @@ F:\InternShip\FullStackRecipeNew\UI\recipe\RecipeBackEnd\RecipeBackEnd.APIs\obj\
 F:\InternShip\FullStackRecipeNew\UI\recipe\RecipeBackEnd\RecipeBackEnd.APIs\obj\Debug\net7.0\RecipeBackEnd.APIs.pdb
 F:\InternShip\FullStackRecipeNew\UI\recipe\RecipeBackEnd\RecipeBackEnd.APIs\obj\Debug\net7.0\RecipeBackEnd.APIs.genruntimeconfig.cache
 F:\InternShip\FullStackRecipeNew\UI\recipe\RecipeBackEnd\RecipeBackEnd.APIs\obj\Debug\net7.0\ref\RecipeBackEnd.APIs.dll
+F:\InternShip\FullStackRecipeNew\UI\recipe\RecipeBackEnd\RecipeBackEnd.APIs\bin\Debug\net7.0\RecipeBackEnd.APIs.staticwebassets.runtime.json
+F:\InternShip\FullStackRecipeNew\UI\recipe\RecipeBackEnd\RecipeBackEnd.APIs\bin\Debug\net7.0\AutoMapper.dll
+F:\InternShip\FullStackRecipeNew\UI\recipe\RecipeBackEnd\RecipeBackEnd.APIs\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
