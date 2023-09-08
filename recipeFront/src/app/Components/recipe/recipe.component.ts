@@ -14,10 +14,17 @@ export class RecipeComponent {
   {
        this.getAllRecipes();
   } 
-  getAllRecipes(){this.recipeService.getAllRecipes().subscribe((response:any) => {
-    this.recipes = response;
-  },
-  (error) => {
-    console.error('HTTP Error:', error);
-  }); } 
+  getAllRecipes()
+    {this.recipeService.getAllRecipes().subscribe((response:any) => {
+      this.recipes = response;
+    },
+    (error) => {
+      console.error('HTTP Error:', error);
+    }); } 
+  EditRecipe(id:number,model:Recipe){
+    this.recipeService.UpdateRecipe(id,model)
+  }
+  DeleteRecipe(id:number){
+    this.recipeService.DeleteRecipe(id)
+  }
 }
