@@ -1,0 +1,11 @@
+F:\InternShip\FullStackRecipeNew\RecipeBackEnd\RecipeBackEnd.Services\bin\Debug\net7.0\RecipeBackEnd.Services.deps.json
+F:\InternShip\FullStackRecipeNew\RecipeBackEnd\RecipeBackEnd.Services\bin\Debug\net7.0\RecipeBackEnd.Services.dll
+F:\InternShip\FullStackRecipeNew\RecipeBackEnd\RecipeBackEnd.Services\bin\Debug\net7.0\RecipeBackEnd.Services.pdb
+F:\InternShip\FullStackRecipeNew\RecipeBackEnd\RecipeBackEnd.Services\obj\Debug\net7.0\RecipeBackEnd.Services.GeneratedMSBuildEditorConfig.editorconfig
+F:\InternShip\FullStackRecipeNew\RecipeBackEnd\RecipeBackEnd.Services\obj\Debug\net7.0\RecipeBackEnd.Services.AssemblyInfoInputs.cache
+F:\InternShip\FullStackRecipeNew\RecipeBackEnd\RecipeBackEnd.Services\obj\Debug\net7.0\RecipeBackEnd.Services.AssemblyInfo.cs
+F:\InternShip\FullStackRecipeNew\RecipeBackEnd\RecipeBackEnd.Services\obj\Debug\net7.0\RecipeBackEnd.Services.csproj.CoreCompileInputs.cache
+F:\InternShip\FullStackRecipeNew\RecipeBackEnd\RecipeBackEnd.Services\obj\Debug\net7.0\RecipeBackEnd.Services.dll
+F:\InternShip\FullStackRecipeNew\RecipeBackEnd\RecipeBackEnd.Services\obj\Debug\net7.0\refint\RecipeBackEnd.Services.dll
+F:\InternShip\FullStackRecipeNew\RecipeBackEnd\RecipeBackEnd.Services\obj\Debug\net7.0\RecipeBackEnd.Services.pdb
+F:\InternShip\FullStackRecipeNew\RecipeBackEnd\RecipeBackEnd.Services\obj\Debug\net7.0\ref\RecipeBackEnd.Services.dll
