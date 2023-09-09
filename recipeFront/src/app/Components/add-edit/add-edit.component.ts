@@ -40,7 +40,6 @@ export class AddEditComponent {
 
     this.closeDialog();
   }
-
   //image 
   onFileSelected(event: any): void {
     this.selectedFile = event.target.files[0] as File;
