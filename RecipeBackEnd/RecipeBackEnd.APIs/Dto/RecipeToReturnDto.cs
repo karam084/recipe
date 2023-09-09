@@ -6,7 +6,7 @@ namespace RecipeBackEnd.APIs.Dto
     public class RecipeToReturnDto
     {
         
-        public int ID { get; set; }
+        public int RecipeID { get; set; }
         [MinLength(3, ErrorMessage = "The Minimum Lenght More Than 3 characters")]
         public string Name { get; set; }
 

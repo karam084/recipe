@@ -15,7 +15,7 @@ namespace RecipeBackEnd.APIs.Dto.Helpers
         public string Resolve(Recipe source, RecipeToReturnDto destination, string destMember, ResolutionContext context)
         {
             if (!string.IsNullOrEmpty(source.Image))
-                return $"{_configuration["ApiBaseUrl"]}{source.Image}";
+                return $"{_configuration["ApiBaseUrlDynamic"]}{source.Image}";
             return string.Empty;
         }
     }
