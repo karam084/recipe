@@ -8,7 +8,7 @@ namespace RecipeBackEnd.APIs
 {
     public class Program
     {
-        public  static void Main(string[] args)
+        public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -16,17 +16,17 @@ namespace RecipeBackEnd.APIs
 
             #region Configure Service
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
-            builder.Services.AddDbContext<StoreContext>(Options =>
+            // Learn more about configuring Swagger/OpenAPI at /* https://aka.ms/aspnetcore/swashbuckle */
+             builder.Services.AddEndpointsApiExplorer();
+             builder.Services.AddSwaggerGen();
+             builder.Services.AddDbContext<StoreContext>(Options =>
             {
-                Options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+                 Options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
-            builder.Services.AddScoped<IRecipeBackEnd, RecipeImplement>();
+             builder.Services.AddScoped<IRecipeBackEnd, RecipeImplement>();
 
             //builder.Services.AddAutoMapper(M=>M.AddProfile(new MappingProfiles()));
-            builder.Services.AddAutoMapper(typeof(MappingProfiles));
+             builder.Services.AddAutoMapper(typeof(MappingProfiles));
             #endregion
 
             var app = builder.Build();
@@ -53,15 +53,15 @@ namespace RecipeBackEnd.APIs
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
-                app.UseSwagger();
-                app.UseSwaggerUI();
+                 app.UseSwagger();
+                 app.UseSwaggerUI();
             }
 
-            app.UseStaticFiles();
 
-            app.UseHttpsRedirection();
+             app.UseHttpsRedirection();
+             app.UseStaticFiles();
 
-            app.UseAuthorization();
+             app.UseAuthorization();
 
 
             app.MapControllers(); 

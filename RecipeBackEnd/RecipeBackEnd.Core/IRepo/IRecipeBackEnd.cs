@@ -12,6 +12,6 @@ namespace RecipeBackEnd.Core.IRepo
         Task<List<Recipe>> GetAllRecipe();
         Task AddRecipe(Recipe recipe);
         Task EditeRecipe(Recipe recipe);
-        void DeleteProduct(int id);
+        void DeleteRecipe(int id);
     }
 }

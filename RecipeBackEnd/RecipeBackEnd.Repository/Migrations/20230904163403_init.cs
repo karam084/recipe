@@ -10,7 +10,7 @@ namespace RecipeBackEnd.Repository.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
+            _ = migrationBuilder.CreateTable(
                 name: "BackEndRecipes",
                 columns: table => new
                 {
@@ -23,14 +23,14 @@ namespace RecipeBackEnd.Repository.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BackEndRecipes", x => x.ID);
+                    _ = table.PrimaryKey("PK_BackEndRecipes", x => x.ID);
                 });
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
+            _ = migrationBuilder.DropTable(
                 name: "BackEndRecipes");
         }
     }

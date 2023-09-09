@@ -25,8 +25,8 @@ namespace RecipeBackEnd.Repository
         }
         public async Task AddRecipe(Recipe recipe)
         {
-            await _dbcontext.BackEndRecipes.AddAsync(recipe);
-            await _dbcontext.SaveChangesAsync();
+             await _dbcontext.BackEndRecipes.AddAsync(recipe);
+             await _dbcontext.SaveChangesAsync();
 
         }
 
@@ -35,12 +35,13 @@ namespace RecipeBackEnd.Repository
             var checkid = await _dbcontext.BackEndRecipes.FindAsync(recipe.ID);
             if (checkid != null)
             {
-                _dbcontext.BackEndRecipes.Update(recipe);
-                await _dbcontext.SaveChangesAsync();
+                 _dbcontext.BackEndRecipes.Update(recipe);
+                 await _dbcontext.SaveChangesAsync();
             }
         }
 
-        public void DeleteProduct(int id)
+
+        public void DeleteRecipe(int id)
         {
             if (id != 0)
             {

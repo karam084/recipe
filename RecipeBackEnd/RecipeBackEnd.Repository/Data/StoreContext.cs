@@ -23,7 +23,7 @@ namespace RecipeBackEnd.Repository.Data
         {
             base.OnModelCreating(modelBuilder);
             // modelBuilder.ApplyConfiguration(new RecipeConfiguration());
-            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+           modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
         }
     }

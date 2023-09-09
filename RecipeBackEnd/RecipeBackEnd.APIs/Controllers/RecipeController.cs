@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using RecipeBackEnd.APIs.Dto;
 using RecipeBackEnd.Core.IRepo;
 using RecipeBackEnd.Core.Models;
@@ -39,24 +40,23 @@ namespace RecipeBackEnd.APIs.Controllers
         {
             
             await _recipeInterface.AddRecipe(recipe);
-            return Ok(_mapper.Map<Recipe,RecipeToReturnDto>(recipe));
+            return Ok(_mapper.Map<Recipe, RecipeToReturnDto>(recipe));
 
         }
-
-        // PUT api/<RecipeController>/5
+        //// PUT api/<RecipeController>/5
         [HttpPut("{id}")]
-        public IActionResult EditeRecipe(int id, [FromBody] Recipe recipe)
+        public IActionResult EditeRecipe(int id, Recipe recipe)
         {
             //return Ok(_recipeInterface.EditeRecipe(recipe));
-             _recipeInterface.EditeRecipe(recipe);
-            return Ok(_mapper.Map<Recipe,RecipeToReturnDto>(recipe));
+            _recipeInterface.EditeRecipe(recipe);
+            return Ok(_mapper.Map<Recipe, RecipeToReturnDto>(recipe));
         }
 
         // DELETE api/<RecipeController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            _recipeInterface.DeleteProduct(id);
+            _recipeInterface.DeleteRecipe(id);
         }
     }
 }

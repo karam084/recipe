@@ -14,10 +14,10 @@ namespace RecipeBackEnd.Repository.Data.Config
         {
             public void Configure(EntityTypeBuilder<Recipe> builder)
             {
-                builder.Property(p => p.Name).IsRequired();
-                builder.Property(p => p.Intgredients).IsRequired();
-                builder.Property(p => p.Steps).IsRequired();
-                builder.Property(p => p.Image);
+             builder.Property(p => p.Name).IsRequired();
+             builder.Property(p => p.Intgredients).IsRequired();
+             builder.Property(p => p.Steps).IsRequired();
+             builder.Property(p => p.Image);
 
             }
     }
