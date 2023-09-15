@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic;
 using RecipeBackEnd.APIs.Dto;
 using RecipeBackEnd.Core.IRepo;
 using RecipeBackEnd.Core.Models;
+using RecipeBackEnd.Repository;
 
 namespace RecipeBackEnd.APIs.Controllers
 {
@@ -14,14 +16,14 @@ namespace RecipeBackEnd.APIs.Controllers
         private readonly IRecipeBackEnd _recipeInterface;
         private readonly IMapper _mapper;
 
-        public RecipeController(IRecipeBackEnd recipeInterface , IMapper mapper)
+        public RecipeController(IRecipeBackEnd recipeInterface, IMapper mapper)
         {
             _recipeInterface = recipeInterface;
             _mapper = mapper;
         }
         // GET: api/<RecipeController>
         [HttpGet]
-        public async Task <IActionResult> GetAllRecipe()
+        public async Task<IActionResult> GetAllRecipe()
         {
             return Ok(await _recipeInterface.GetAllRecipe());
         }
@@ -38,7 +40,7 @@ namespace RecipeBackEnd.APIs.Controllers
         public async Task<IActionResult> AddRecipe(Recipe recipe)
 
         {
-            
+
             await _recipeInterface.AddRecipe(recipe);
             return Ok(_mapper.Map<Recipe, RecipeToReturnDto>(recipe));
 
@@ -58,5 +60,27 @@ namespace RecipeBackEnd.APIs.Controllers
         {
             _recipeInterface.DeleteRecipe(id);
         }
+
+        //Search
+        [HttpGet("{name}")]
+        public async Task<IActionResult> Search(string Name)
+        {
+            return Ok(await _recipeInterface.GetAllRecipeSearch(Name));
+        }
+
+        //Search
+        [HttpGet("{Integ}")]
+        public async Task<IActionResult> Searchinteg(string integ)
+        {
+            return Ok(await _recipeInterface.GetAllRecipeSearchIntegred(integ));
+        }
+
+        //Paging
+        [HttpGet("{pageSize}")]
+        public async Task<IActionResult> GetPagedRecipes(int pageNumber = 1, int pageSize = 10)
+        {
+             return Ok(await _recipeInterface.Paging(pageNumber, pageSize));
+        }
     }
+
 }

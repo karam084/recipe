@@ -4,6 +4,7 @@ using RecipeBackEnd.Core.Models;
 using RecipeBackEnd.Repository.Data;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,6 +50,33 @@ namespace RecipeBackEnd.Repository
                 _dbcontext.BackEndRecipes.Remove(deleteRecipe);
                 _dbcontext.SaveChanges();
             }
+        }
+
+
+        public async Task<List<Recipe>> GetAllRecipeSearch(string name)
+        {
+                // return only result of name
+            //var res = await _dbcontext.BackEndRecipes.Where(x => x.Name.ToLower()
+            //    .Equals(name.ToLower())).ToListAsync();
+            //return (res);
+            var res = await _dbcontext.BackEndRecipes.Where(x => x.Name.ToLower()
+                .Contains(name.ToLower())).ToListAsync();
+            return (res);
+
+        }
+
+        public async Task<List<Recipe>> GetAllRecipeSearchIntegred(string integ)
+        {
+                var result = await _dbcontext.BackEndRecipes.Where(x => x.Intgredients.ToLower()
+                .Contains(integ.ToLower())).ToListAsync();
+                  return (result);
+        }
+
+        public async Task<List<Recipe>> Paging(int pageNumberr = 2, int pageSizee = 2)
+        {
+            var items = await _dbcontext.BackEndRecipes.Skip((pageNumberr - 1) * pageSizee)
+                      .Take(pageSizee).ToListAsync();
+            return items;
         }
     }
 }
