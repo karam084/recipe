@@ -1,11 +1,10 @@
 <h1 class=" text-center"> All Reciepes </h1>
 <div class="text-center">
-  <!-- <button type="button" class="btn btn-primary center"  >Add new</button> -->
-  <app-add-edit></app-add-edit>
+  <button class="btn btn-success m-1 text-right" (click)="displayAddRecipe=true">Add Recipe</button>
 </div>
 <div class="container text-center">
-    <table class="table ">
-      <thead>
+    <p-table [value]="recipes" [paginator]="true" [rows]="10">
+      <ng-template pTemplate="header">
         <tr >
           <th>Name</th>
           <th>Ingredients</th>
@@ -13,19 +12,30 @@
           <th>Image</th>
           <th>Actions</th>
         </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of recipes">
-          <td>{{ item.name }}</td>
-          <td>{{ item.ingredients }}</td>
-          <td>{{ item.steps }}</td>
-          <td>{{ item.image }}</td>
+      </ng-template>
+      <ng-template pTemplate="body" let-recipe>
+        <tr>
+          <td>{{ recipe.name }}</td>
+          <td>{{ recipe.ingredients }}</td>
+          <td>{{ recipe.steps }}</td>
+          <td><img src="{{ recipe.image }}" height="30px"/></td>
           <td>
-            <button class="btn btn-danger m-1"  onclick="DeleteRecipe(item.id)">Delete</button>
-            <button class="btn btn-warning m-1" onclick="EditRecipe(item.id)">Edit</button>
+            <button
+            pButton
+            icon="pi pi-pencil"
+            class="p-button-rounded p-button-success p-mr-2" (click)="editRecipe(recipe)">
+          </button>
           </td>
         </tr>
-      </tbody>
-    </table>
+      </ng-template>
+    </p-table>
 </div>
-  
+
+<app-add-edit-recipe [displayAddRecipe]="displayAddRecipe"
+[selectedRecipe]="selectedRecipe"
+ (clickClose)="hideAddModel($event)"
+ (clickAddRecipe)="saveRecipeToList($event)">
+ </app-add-edit-recipe>
+<p-toast position="bottom-right"></p-toast>
+
+
