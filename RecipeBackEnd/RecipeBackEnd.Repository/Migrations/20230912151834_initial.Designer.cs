@@ -11,8 +11,8 @@ using RecipeBackEnd.Repository.Data;
 namespace RecipeBackEnd.Repository.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20230904163403_init")]
-    partial class init
+    [Migration("20230912151834_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -49,7 +49,7 @@ namespace RecipeBackEnd.Repository.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("BackEndRecipes");
+                    b.ToTable("Recipes");
                 });
 #pragma warning restore 612, 618
         }

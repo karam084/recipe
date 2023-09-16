@@ -24,9 +24,8 @@ namespace RecipeBackEnd.APIs
                  Options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
              builder.Services.AddScoped<IRecipeBackEnd, RecipeImplement>();
-
             //builder.Services.AddAutoMapper(M=>M.AddProfile(new MappingProfiles()));
-             builder.Services.AddAutoMapper(typeof(MappingProfiles));
+            builder.Services.AddAutoMapper(typeof(MappingProfiles));
             #endregion
 
             var app = builder.Build();

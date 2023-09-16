@@ -8,10 +8,11 @@ using System.Threading.Tasks;
 
 namespace RecipeBackEnd.Core.Models
 {
-    public class Recipe
+    public class Recipe 
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
+
         [MinLength(3, ErrorMessage = "The Minimum Lenght More Than 3 characters")]
         public string Name { get; set; }
 
@@ -21,5 +22,7 @@ namespace RecipeBackEnd.Core.Models
         [MinLength(1, ErrorMessage = "The Minimum Lenght More Than 1 characters")]
         public string Steps { get; set; }
         public string? Image { get; set; }
+
+
     }
 }

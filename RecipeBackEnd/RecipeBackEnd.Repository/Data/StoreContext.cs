@@ -17,7 +17,7 @@ namespace RecipeBackEnd.Repository.Data
 
 
         }
-        public DbSet<Recipe> BackEndRecipes { get; set; }
+        public DbSet<Recipe> Recipes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

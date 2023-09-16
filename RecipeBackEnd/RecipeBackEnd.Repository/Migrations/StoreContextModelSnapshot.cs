@@ -46,7 +46,7 @@ namespace RecipeBackEnd.Repository.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("BackEndRecipes");
+                    b.ToTable("Recipes");
                 });
 #pragma warning restore 612, 618
         }

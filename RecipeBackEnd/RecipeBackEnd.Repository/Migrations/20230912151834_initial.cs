@@ -5,13 +5,13 @@
 namespace RecipeBackEnd.Repository.Migrations
 {
     /// <inheritdoc />
-    public partial class init : Migration
+    public partial class initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            _ = migrationBuilder.CreateTable(
-                name: "BackEndRecipes",
+            migrationBuilder.CreateTable(
+                name: "Recipes",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
@@ -23,15 +23,15 @@ namespace RecipeBackEnd.Repository.Migrations
                 },
                 constraints: table =>
                 {
-                    _ = table.PrimaryKey("PK_BackEndRecipes", x => x.ID);
+                    table.PrimaryKey("PK_Recipes", x => x.ID);
                 });
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            _ = migrationBuilder.DropTable(
-                name: "BackEndRecipes");
+            migrationBuilder.DropTable(
+                name: "Recipes");
         }
     }
 }

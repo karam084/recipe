@@ -62,14 +62,14 @@ namespace RecipeBackEnd.APIs.Controllers
         }
 
         //Search
-        [HttpGet("{name}")]
+        [HttpPost("{name}")]
         public async Task<IActionResult> Search(string Name)
         {
             return Ok(await _recipeInterface.GetAllRecipeSearch(Name));
         }
 
         //Search
-        [HttpGet("{Integ}")]
+        [HttpPost("{Integ}")]
         public async Task<IActionResult> Searchinteg(string integ)
         {
             return Ok(await _recipeInterface.GetAllRecipeSearchIntegred(integ));

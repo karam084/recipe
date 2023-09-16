@@ -6,8 +6,8 @@ namespace RecipeBackEnd.APIs.Dto.Helpers
     {
         public MappingProfiles()
         {
-             CreateMap<Recipe, RecipeToReturnDto>()
+            CreateMap<Recipe, RecipeToReturnDto>()
              .ForMember(d => d.Image, O => O.MapFrom<RecipePictureUrlResolver>());
-        }
+         }
     }
 }

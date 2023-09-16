@@ -16,5 +16,11 @@ namespace RecipeBackEnd.APIs.Dto
         [MinLength(1, ErrorMessage = "The Minimum Lenght More Than 1 characters")]
         public string Steps { get; set; }
         public string? Image { get; set; }
+
+        //////////relation Between Recipe and Category of Recipe
+        public int RecipeTypeId { get; set; }       /// foreign key
+
+        // Navigational Property
+        public string RecipeType { get; set; } // contain name of type
     }
 }
