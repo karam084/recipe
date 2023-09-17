@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "S8mf2CS1JhX79iiVXmo+TXL9xdrS7hyknPEUOADIhRY=",
+  "Hash": "7bWtceV5y6C16N8ddxKaM5yEBICAZYJDiH8MI10JHdo=",
   "Source": "RecipeBackEnd.APIs",
   "BasePath": "_content/RecipeBackEnd.APIs",
   "Mode": "Default",
@@ -8,19 +8,19 @@
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [
     {
-      "Name": "RecipeBackEnd.APIs/wwwroot",
+      "Name": "RecipeBackEnd.APIs\\wwwroot",
       "Source": "RecipeBackEnd.APIs",
-      "ContentRoot": "/home/kezz/recipe/RecipeBackEnd/RecipeBackEnd.APIs/wwwroot/",
+      "ContentRoot": "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.APIs\\wwwroot\\",
       "BasePath": "_content/RecipeBackEnd.APIs",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "/home/kezz/recipe/RecipeBackEnd/RecipeBackEnd.APIs/wwwroot/images/five.jpeg",
+      "Identity": "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.APIs\\wwwroot\\images\\five.jpeg",
       "SourceId": "RecipeBackEnd.APIs",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kezz/recipe/RecipeBackEnd/RecipeBackEnd.APIs/wwwroot/",
+      "ContentRoot": "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.APIs\\wwwroot\\",
       "BasePath": "_content/RecipeBackEnd.APIs",
       "RelativePath": "images/five.jpeg",
       "AssetKind": "All",
@@ -31,13 +31,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/images/five.jpeg"
+      "OriginalItemSpec": "wwwroot\\images\\five.jpeg"
     },
     {
-      "Identity": "/home/kezz/recipe/RecipeBackEnd/RecipeBackEnd.APIs/wwwroot/images/four.jpeg",
+      "Identity": "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.APIs\\wwwroot\\images\\four.jpeg",
       "SourceId": "RecipeBackEnd.APIs",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kezz/recipe/RecipeBackEnd/RecipeBackEnd.APIs/wwwroot/",
+      "ContentRoot": "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.APIs\\wwwroot\\",
       "BasePath": "_content/RecipeBackEnd.APIs",
       "RelativePath": "images/four.jpeg",
       "AssetKind": "All",
@@ -48,13 +48,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/images/four.jpeg"
+      "OriginalItemSpec": "wwwroot\\images\\four.jpeg"
     },
     {
-      "Identity": "/home/kezz/recipe/RecipeBackEnd/RecipeBackEnd.APIs/wwwroot/images/one.jpeg",
+      "Identity": "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.APIs\\wwwroot\\images\\one.jpeg",
       "SourceId": "RecipeBackEnd.APIs",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kezz/recipe/RecipeBackEnd/RecipeBackEnd.APIs/wwwroot/",
+      "ContentRoot": "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.APIs\\wwwroot\\",
       "BasePath": "_content/RecipeBackEnd.APIs",
       "RelativePath": "images/one.jpeg",
       "AssetKind": "All",
@@ -65,13 +65,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/images/one.jpeg"
+      "OriginalItemSpec": "wwwroot\\images\\one.jpeg"
     },
     {
-      "Identity": "/home/kezz/recipe/RecipeBackEnd/RecipeBackEnd.APIs/wwwroot/images/seven.jpeg",
+      "Identity": "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.APIs\\wwwroot\\images\\seven.jpeg",
       "SourceId": "RecipeBackEnd.APIs",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kezz/recipe/RecipeBackEnd/RecipeBackEnd.APIs/wwwroot/",
+      "ContentRoot": "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.APIs\\wwwroot\\",
       "BasePath": "_content/RecipeBackEnd.APIs",
       "RelativePath": "images/seven.jpeg",
       "AssetKind": "All",
@@ -82,13 +82,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/images/seven.jpeg"
+      "OriginalItemSpec": "wwwroot\\images\\seven.jpeg"
     },
     {
-      "Identity": "/home/kezz/recipe/RecipeBackEnd/RecipeBackEnd.APIs/wwwroot/images/sex.jpeg",
+      "Identity": "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.APIs\\wwwroot\\images\\sex.jpeg",
       "SourceId": "RecipeBackEnd.APIs",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kezz/recipe/RecipeBackEnd/RecipeBackEnd.APIs/wwwroot/",
+      "ContentRoot": "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.APIs\\wwwroot\\",
       "BasePath": "_content/RecipeBackEnd.APIs",
       "RelativePath": "images/sex.jpeg",
       "AssetKind": "All",
@@ -99,13 +99,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/images/sex.jpeg"
+      "OriginalItemSpec": "wwwroot\\images\\sex.jpeg"
     },
     {
-      "Identity": "/home/kezz/recipe/RecipeBackEnd/RecipeBackEnd.APIs/wwwroot/images/three.jpeg",
+      "Identity": "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.APIs\\wwwroot\\images\\three.jpeg",
       "SourceId": "RecipeBackEnd.APIs",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kezz/recipe/RecipeBackEnd/RecipeBackEnd.APIs/wwwroot/",
+      "ContentRoot": "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.APIs\\wwwroot\\",
       "BasePath": "_content/RecipeBackEnd.APIs",
       "RelativePath": "images/three.jpeg",
       "AssetKind": "All",
@@ -116,13 +116,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/images/three.jpeg"
+      "OriginalItemSpec": "wwwroot\\images\\three.jpeg"
     },
     {
-      "Identity": "/home/kezz/recipe/RecipeBackEnd/RecipeBackEnd.APIs/wwwroot/images/two.jpeg",
+      "Identity": "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.APIs\\wwwroot\\images\\two.jpeg",
       "SourceId": "RecipeBackEnd.APIs",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/kezz/recipe/RecipeBackEnd/RecipeBackEnd.APIs/wwwroot/",
+      "ContentRoot": "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.APIs\\wwwroot\\",
       "BasePath": "_content/RecipeBackEnd.APIs",
       "RelativePath": "images/two.jpeg",
       "AssetKind": "All",
@@ -133,7 +133,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/images/two.jpeg"
+      "OriginalItemSpec": "wwwroot\\images\\two.jpeg"
     }
   ]
 }

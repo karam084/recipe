@@ -16,7 +16,7 @@ namespace RecipeBackEnd.Core.IRepo
         void DeleteRecipe(int id);
         Task<List<Recipe>> GetAllRecipeSearch(string name);
         Task<List<Recipe>> GetAllRecipeSearchIntegred(string Integ);
-        //Task<List<Recipe>> GetAllRecipeSearchIntegred(string name, string Integ);
         Task<List<Recipe>> Paging(int PagNum, int PagSize);
+        Task<List<Recipe>> GetAllRecipeValue(string Value);
     }
 }

@@ -8,24 +8,26 @@
     "net7.0": []
   },
   "packageFolders": {
-    "/home/kezz/.nuget/packages/": {}
+    "C:\\Users\\Eng Mohamed Hamed\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/kezz/recipe/RecipeBackEnd/RecipeBackEnd.Core/RecipeBackEnd.Core.csproj",
+      "projectUniqueName": "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.Core\\RecipeBackEnd.Core.csproj",
       "projectName": "RecipeBackEnd.Core",
-      "projectPath": "/home/kezz/recipe/RecipeBackEnd/RecipeBackEnd.Core/RecipeBackEnd.Core.csproj",
-      "packagesPath": "/home/kezz/.nuget/packages/",
-      "outputPath": "/home/kezz/recipe/RecipeBackEnd/RecipeBackEnd.Core/obj/",
+      "projectPath": "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.Core\\RecipeBackEnd.Core.csproj",
+      "packagesPath": "C:\\Users\\Eng Mohamed Hamed\\.nuget\\packages\\",
+      "outputPath": "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.Core\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/kezz/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Eng Mohamed Hamed\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -59,7 +61,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.400/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

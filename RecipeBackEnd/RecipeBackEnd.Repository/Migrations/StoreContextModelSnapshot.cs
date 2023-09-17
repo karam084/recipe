@@ -44,9 +44,42 @@ namespace RecipeBackEnd.Repository.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("recipeTypeId")
+                        .HasColumnType("int");
+
                     b.HasKey("ID");
 
+                    b.HasIndex("recipeTypeId");
+
                     b.ToTable("Recipes");
+                });
+
+            modelBuilder.Entity("RecipeBackEnd.Core.Models.RecipeType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("TypeName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RecipeTypes");
+                });
+
+            modelBuilder.Entity("RecipeBackEnd.Core.Models.Recipe", b =>
+                {
+                    b.HasOne("RecipeBackEnd.Core.Models.RecipeType", "recipeType")
+                        .WithMany()
+                        .HasForeignKey("recipeTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("recipeType");
                 });
 #pragma warning restore 612, 618
         }

@@ -22,7 +22,10 @@ namespace RecipeBackEnd.Core.Models
         [MinLength(1, ErrorMessage = "The Minimum Lenght More Than 1 characters")]
         public string Steps { get; set; }
         public string? Image { get; set; }
-
+        
+        public int recipeTypeId { get; set; }
+        [ForeignKey("recipeTypeId")]
+        public RecipeType recipeType { get; set; }
 
     }
 }

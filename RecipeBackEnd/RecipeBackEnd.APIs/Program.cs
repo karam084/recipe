@@ -65,7 +65,6 @@ namespace RecipeBackEnd.APIs
 
             app.MapControllers(); 
             #endregion
-
             app.Run();
         }
     }

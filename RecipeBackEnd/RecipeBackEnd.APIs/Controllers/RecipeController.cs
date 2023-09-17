@@ -46,12 +46,13 @@ namespace RecipeBackEnd.APIs.Controllers
 
         }
         //// PUT api/<RecipeController>/5
-        [HttpPut("{id}")]
-        public IActionResult EditeRecipe(int id, Recipe recipe)
+        [HttpPut]
+        public IActionResult EditeRecipe( Recipe recipe)
         {
             //return Ok(_recipeInterface.EditeRecipe(recipe));
-            _recipeInterface.EditeRecipe(recipe);
-            return Ok(_mapper.Map<Recipe, RecipeToReturnDto>(recipe));
+            var res = _recipeInterface.EditeRecipe(recipe);
+            return Ok(res);
+           // return Ok(_mapper.Map<Recipe, RecipeToReturnDto>(recipe));
         }
 
         // DELETE api/<RecipeController>/5
@@ -80,6 +81,13 @@ namespace RecipeBackEnd.APIs.Controllers
         public async Task<IActionResult> GetPagedRecipes(int pageNumber = 1, int pageSize = 10)
         {
              return Ok(await _recipeInterface.Paging(pageNumber, pageSize));
+        }
+
+        //Search by value
+        [HttpPost("{Value}")]
+        public async Task<IActionResult> searchValue(string value)
+        {
+            return Ok(await _recipeInterface.GetAllRecipeValue(value));
         }
     }
 

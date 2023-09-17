@@ -18,6 +18,8 @@ namespace RecipeBackEnd.Repository.Data.Config
             builder.Property(p => p.Intgredients).IsRequired();
             builder.Property(p => p.Steps).IsRequired();
 
+            
+
             }
     }
 }

@@ -10,6 +10,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
+using static Azure.Core.HttpHeader;
 
 namespace RecipeBackEnd.Repository
 {
@@ -23,7 +25,7 @@ namespace RecipeBackEnd.Repository
         }
         public async Task<List<Recipe>> GetAllRecipe()
         {
-            var res = await _dbcontext.Recipes.ToListAsync();
+            var res = await _dbcontext.Recipes.Include(a=>a.recipeType).ToListAsync();
             return res;
         }
         public async Task AddRecipe(Recipe recipe)
@@ -38,7 +40,17 @@ namespace RecipeBackEnd.Repository
             var checkid = await _dbcontext.Recipes.FindAsync(recipe.ID);
             if (checkid != null)
             {
-                _dbcontext.Recipes.Update(recipe);
+                // _dbcontext.Recipes.Update(checkid);
+                // _dbcontext.Entry(checkid).CurrentValues.SetValues(recipe);
+                checkid = new Recipe { 
+                ID = recipe.ID,
+                Name = recipe.Name,
+                Intgredients = recipe.Intgredients,
+                Image = recipe.Image,
+                Steps = recipe.Steps,
+                recipeType = recipe.recipeType,
+                recipeTypeId = recipe.recipeTypeId,
+                };
                 await _dbcontext.SaveChangesAsync();
             }
         }
@@ -78,28 +90,16 @@ namespace RecipeBackEnd.Repository
             return items;
         }
 
-
-            ///// /// /// /// Search by name , integrendeent
-            /*
-            public Task<List<Recipe>> GetAllRecipeSearchIntegred(string name, string Integ)
+        public async Task<List<Recipe>> GetAllRecipeValue(string Value)
+        {
+            var result = _dbcontext.Recipes.Include(a => a.recipeType).AsNoTracking(); // high performance forget data
+            if (!string.IsNullOrEmpty(Value))
             {
-                var rescipeData = _dbcontext.Recipes.AsQueryable()
-                               .Join(_dbcontext.RecipeTypes.AsQueryable(), m => m.RecipeTypeId, p => p.Id, (m, p) =>
-                               new {
-                                   //RecipeId = m.ID,
-                                   RecipeName = m.Name,
-                                   integredent = Integ,
-
-                               });
-                if (!string.IsNullOrEmpty(name))
-                {
-                    rescipeData = rescipeData.Where(x => x.RecipeName.Contains(name));
-                }
-                if (!string.IsNullOrEmpty(Integ))
-                {
-                    rescipeData = rescipeData.Where(x => x.integredent.Contains(Integ));
-                }
+                result = result.Where(x => x.Name.ToLower().Contains(Value) || x.Intgredients.Contains(Value));
             }
-            */
+            return(await result.ToListAsync());
+           
         }
-    } 
+
+    }
+ } 
