@@ -40,6 +40,9 @@ namespace RecipeBackEnd.Repository.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Rate")
+                        .HasColumnType("int");
+
                     b.Property<string>("Steps")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

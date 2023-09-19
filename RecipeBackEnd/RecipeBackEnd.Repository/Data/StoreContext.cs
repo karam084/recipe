@@ -20,13 +20,5 @@ namespace RecipeBackEnd.Repository.Data
         public DbSet<Recipe> Recipes { get; set; }
         public DbSet<RecipeType> RecipeTypes { get; set; }
 
-
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    base.OnModelCreating(modelBuilder);
-        //    // modelBuilder.ApplyConfiguration(new RecipeConfiguration());
-        //   modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-
-        //}
     }
 }

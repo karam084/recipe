@@ -8,7 +8,7 @@ namespace RecipeBackEnd.APIs
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -38,7 +38,7 @@ namespace RecipeBackEnd.APIs
             try
             {
                 var dbContext = Services.GetRequiredService<StoreContext>(); //Ask clr for create object
-                 dbContext.Database.MigrateAsync();  // Update Database
+                await dbContext.Database.MigrateAsync();  // Update Database
             }
             catch (Exception ex)
             {

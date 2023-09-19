@@ -30,7 +30,12 @@ namespace RecipeBackEnd.APIs.Controllers
         [HttpGet("{id}")]                           // Get :  /api/Recipe/Get/1
         public async Task<ActionResult<RecipeToReturnDto>> Get(int id)
         {
-            return Ok(await _recipeInterface.GetById(id));
+            if (id == 0)
+                return BadRequest("Id invalid");
+            var Result = await _recipeInterface.GetById(id);
+            if (Result == null)
+                return BadRequest("Recipe Not Found");
+            return Ok(Result);
         }
 
         [HttpPost]                                // Post : api/Recipe/Add

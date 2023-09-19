@@ -7,7 +7,6 @@ namespace RecipeBackEnd.APIs.Dto.Helpers
     public class RecipePictureUrlResolver : IValueResolver< RecipeToReturnDto, Recipe, string>
     {
         private readonly IConfiguration _configuration;
-
         public RecipePictureUrlResolver(IConfiguration configuration)
         {
             _configuration = configuration;

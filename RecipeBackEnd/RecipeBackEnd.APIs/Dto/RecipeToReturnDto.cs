@@ -14,10 +14,9 @@ namespace RecipeBackEnd.APIs.Dto
 
         public string Steps { get; set; }
         public string? Image { get; set; }
-
+        public int Rate { get; set; }
 
         //////////relation Between Recipe and Category of Recipe
         public int recipeTypeId { get; set; }        /// foreign key
-       
     }
 }

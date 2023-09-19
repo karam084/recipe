@@ -25,7 +25,7 @@ namespace RecipeBackEnd.Repository
         }
         public async Task<List<Recipe>> GetAll()
         {
-            var res = await _dbcontext.Recipes.Include(a => a.recipeType).ToListAsync();
+            var res = await _dbcontext.Recipes.Include(a => a.recipeType).OrderByDescending(r=>r.Rate).ToListAsync();
             return res;
         }
         public async Task<Recipe> GetById(int Id)
