@@ -12,20 +12,23 @@ namespace RecipeBackEnd.Core.Models
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
+        [Required]
 
         [MinLength(3, ErrorMessage = "The Minimum Lenght More Than 3 characters")]
         public string Name { get; set; }
-
+        [Required]
         [MinLength(1, ErrorMessage = "The Minimum Lenght More Than 1 characters")]
-        public string Intgredients { get; set; }
-
+        public string Ingredients { get; set; }
+        
+        [Required]
         [MinLength(1, ErrorMessage = "The Minimum Lenght More Than 1 characters")]
         public string Steps { get; set; }
         public string? Image { get; set; }
-        
-        public int recipeTypeId { get; set; }
+
+        // Relation Between Recipe and Type of Recipe
         [ForeignKey("recipeTypeId")]
-        public RecipeType recipeType { get; set; }
+        public int recipeTypeId { get; set; }   /// foreign key
+        public RecipeType recipeType { get; set; }    // contain name of type
 
     }
 }

@@ -5,7 +5,7 @@
 namespace RecipeBackEnd.Repository.Migrations
 {
     /// <inheritdoc />
-    public partial class Iniut : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -30,7 +30,7 @@ namespace RecipeBackEnd.Repository.Migrations
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Intgredients = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Ingredients = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Steps = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     recipeTypeId = table.Column<int>(type: "int", nullable: false)
@@ -43,7 +43,7 @@ namespace RecipeBackEnd.Repository.Migrations
                         column: x => x.recipeTypeId,
                         principalTable: "RecipeTypes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

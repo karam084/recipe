@@ -10,13 +10,13 @@ namespace RecipeBackEnd.Core.IRepo
 {
     public interface IRecipeBackEnd
     {
-        Task<List<Recipe>> GetAllRecipe();
-        Task AddRecipe(Recipe recipe);
-        Task EditeRecipe(Recipe recipe);
-        void DeleteRecipe(int id);
-        Task<List<Recipe>> GetAllRecipeSearch(string name);
-        Task<List<Recipe>> GetAllRecipeSearchIntegred(string Integ);
+        Task<List<Recipe>> GetAll();
+        Task<Recipe> GetById(int Id);
+        Task Add(Recipe recipe);
+        Task <Recipe> Edite(Recipe recipe);
+        void Delete(int id);
         Task<List<Recipe>> Paging(int PagNum, int PagSize);
-        Task<List<Recipe>> GetAllRecipeValue(string Value);
+        Task<List<Recipe>> SearchByNameOrIngerdent(string Value);
+        Task<List<Recipe>> SearchByNameAndIngerdent(string name, string ingredent);
     }
 }

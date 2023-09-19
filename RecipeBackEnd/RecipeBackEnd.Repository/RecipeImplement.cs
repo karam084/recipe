@@ -23,40 +23,39 @@ namespace RecipeBackEnd.Repository
         {
             _dbcontext = dbcontext;
         }
-        public async Task<List<Recipe>> GetAllRecipe()
+        public async Task<List<Recipe>> GetAll()
         {
-            var res = await _dbcontext.Recipes.Include(a=>a.recipeType).ToListAsync();
+            var res = await _dbcontext.Recipes.Include(a => a.recipeType).ToListAsync();
             return res;
         }
-        public async Task AddRecipe(Recipe recipe)
+        public async Task<Recipe> GetById(int Id)
+        {
+            var res = await _dbcontext.Recipes.Include(a => a.recipeType)
+                            .FirstOrDefaultAsync(p => p.ID==Id);
+            return res;
+        }
+        public async Task Add(Recipe recipe)
         {
             await _dbcontext.Recipes.AddAsync(recipe);
             await _dbcontext.SaveChangesAsync();
-
         }
-
-        public async Task EditeRecipe(Recipe recipe)
+        public async Task<Recipe> Edite(Recipe recipe)
         {
-            var checkid = await _dbcontext.Recipes.FindAsync(recipe.ID);
+            var checkid = await _dbcontext.Recipes.FirstOrDefaultAsync(a => a.ID == recipe.ID);
             if (checkid != null)
             {
-                // _dbcontext.Recipes.Update(checkid);
-                // _dbcontext.Entry(checkid).CurrentValues.SetValues(recipe);
-                checkid = new Recipe { 
-                ID = recipe.ID,
-                Name = recipe.Name,
-                Intgredients = recipe.Intgredients,
-                Image = recipe.Image,
-                Steps = recipe.Steps,
-                recipeType = recipe.recipeType,
-                recipeTypeId = recipe.recipeTypeId,
-                };
+                _dbcontext.Recipes.Update(checkid);
+                _dbcontext.Entry(checkid).CurrentValues.SetValues(recipe);
                 await _dbcontext.SaveChangesAsync();
             }
+            else
+            {
+                return null;
+            }
+            return checkid;
         }
 
-
-        public void DeleteRecipe(int id)
+        public void Delete(int id)
         {
             if (id != 0)
             {
@@ -64,23 +63,6 @@ namespace RecipeBackEnd.Repository
                 _dbcontext.Recipes.Remove(deleteRecipe);
                 _dbcontext.SaveChanges();
             }
-        }
-
-
-        public async Task<List<Recipe>> GetAllRecipeSearch(string name)
-        {
-
-            var res = await _dbcontext.Recipes.Where(x => x.Name.ToLower()
-                .Contains(name.ToLower())).ToListAsync();
-            return (res);
-
-        }
-
-        public async Task<List<Recipe>> GetAllRecipeSearchIntegred(string integ)
-        {
-            var result = await _dbcontext.Recipes.Where(x => x.Intgredients.ToLower()
-            .Contains(integ.ToLower())).ToListAsync();
-            return (result);
 
         }
         public async Task<List<Recipe>> Paging(int pageNumberr = 2, int pageSizee = 2)
@@ -90,16 +72,29 @@ namespace RecipeBackEnd.Repository
             return items;
         }
 
-        public async Task<List<Recipe>> GetAllRecipeValue(string Value)
+        public async Task<List<Recipe>> SearchByNameOrIngerdent(string Value)
         {
             var result = _dbcontext.Recipes.Include(a => a.recipeType).AsNoTracking(); // high performance forget data
             if (!string.IsNullOrEmpty(Value))
             {
-                result = result.Where(x => x.Name.ToLower().Contains(Value) || x.Intgredients.Contains(Value));
+                result = result.Where(x => x.Name.ToLower().Contains(Value) ||
+                                           x.Ingredients.ToLower().Contains(Value));
             }
-            return(await result.ToListAsync());
-           
+            return (await result.ToListAsync());
         }
+        public Task<List<Recipe>> SearchByNameAndIngerdent(string name, string ingredent)
+        {
+            var result = _dbcontext.Recipes.Include(a => a.recipeType).AsNoTracking(); // high performance forget data
+            if (!string.IsNullOrEmpty(name))
+            {
+                result = result.Where(x => x.Name.ToLower().Contains(name));
+            }
+            if (!string.IsNullOrEmpty(name))
+            {
+                result = result.Where(x => x.Ingredients.ToLower().Contains(ingredent));
+            }
+            return result.ToListAsync();
 
+        }
     }
- } 
+}

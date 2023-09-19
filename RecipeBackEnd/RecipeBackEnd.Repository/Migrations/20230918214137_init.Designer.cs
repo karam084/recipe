@@ -11,8 +11,8 @@ using RecipeBackEnd.Repository.Data;
 namespace RecipeBackEnd.Repository.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20230917192919_Iniut")]
-    partial class Iniut
+    [Migration("20230918214137_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,7 +35,7 @@ namespace RecipeBackEnd.Repository.Migrations
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Intgredients")
+                    b.Property<string>("Ingredients")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
