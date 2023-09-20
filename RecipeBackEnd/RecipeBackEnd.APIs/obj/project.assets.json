@@ -88,6 +88,25 @@
           }
         }
       },
+      "Microsoft.AspNetCore.Authentication.JwtBearer/7.0.11": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.IdentityModel.Protocols.OpenIdConnect": "6.15.1"
+        },
+        "compile": {
+          "lib/net7.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "Microsoft.AspNetCore.Cryptography.Internal/7.0.11": {
         "type": "package",
         "compile": {
@@ -1297,6 +1316,20 @@
         "runtime": {
           "bin/placeholder/RecipeBackEnd.Repository.dll": {}
         }
+      },
+      "RecipeBackEnd.Services/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.11",
+          "RecipeBackEnd.Core": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/RecipeBackEnd.Services.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/RecipeBackEnd.Services.dll": {}
+        }
       }
     }
   },
@@ -1384,6 +1417,21 @@
         "lib/netstandard2.0/Humanizer.dll",
         "lib/netstandard2.0/Humanizer.xml",
         "logo.png"
+      ]
+    },
+    "Microsoft.AspNetCore.Authentication.JwtBearer/7.0.11": {
+      "sha512": "xFLgrIjh9DsfSpSRmfb8PWswYSLxkdU/3y2d3yrSA9v+sajnqYP2BARKrxZlO/RlKKMboosAIYP2MajPJilv5w==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.authentication.jwtbearer/7.0.11",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net7.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll",
+        "lib/net7.0/Microsoft.AspNetCore.Authentication.JwtBearer.xml",
+        "microsoft.aspnetcore.authentication.jwtbearer.7.0.11.nupkg.sha512",
+        "microsoft.aspnetcore.authentication.jwtbearer.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Cryptography.Internal/7.0.11": {
@@ -3600,6 +3648,11 @@
       "type": "project",
       "path": "../RecipeBackEnd.Repository/RecipeBackEnd.Repository.csproj",
       "msbuildProject": "../RecipeBackEnd.Repository/RecipeBackEnd.Repository.csproj"
+    },
+    "RecipeBackEnd.Services/1.0.0": {
+      "type": "project",
+      "path": "../RecipeBackEnd.Services/RecipeBackEnd.Services.csproj",
+      "msbuildProject": "../RecipeBackEnd.Services/RecipeBackEnd.Services.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -3608,6 +3661,7 @@
       "Microsoft.AspNetCore.OpenApi >= 7.0.11",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.11",
       "RecipeBackEnd.Repository >= 1.0.0",
+      "RecipeBackEnd.Services >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.5.0"
     ]
   },
@@ -3640,6 +3694,9 @@
           "projectReferences": {
             "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.Repository\\RecipeBackEnd.Repository.csproj": {
               "projectPath": "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.Repository\\RecipeBackEnd.Repository.csproj"
+            },
+            "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.Services\\RecipeBackEnd.Services.csproj": {
+              "projectPath": "F:\\InternShip\\FullStackRecipeNew\\UI\\recipe\\RecipeBackEnd\\RecipeBackEnd.Services\\RecipeBackEnd.Services.csproj"
             }
           }
         }

@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using RecipeBackEnd.Core.Models.identity;
+using RecipeBackEnd.Core.Service;
 using RecipeBackEnd.Repository.Data.identity;
+using RecipeBackEnd.Services;
 
 namespace RecipeBackEnd.APIs.Extension
 {
@@ -11,7 +14,10 @@ namespace RecipeBackEnd.APIs.Extension
         {
             services.AddIdentity<AppUser, IdentityRole>()
                    .AddEntityFrameworkStores<AppIdentityDbContext>();
-           services.AddAuthentication();
+           services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme);
+
+           services.AddScoped<ITokenService, TokenService>();
+
            return services;
         }
     }

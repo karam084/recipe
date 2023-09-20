@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using RecipeBackEnd.APIs.Dto;
 using RecipeBackEnd.Core.Models.identity;
+using RecipeBackEnd.Core.Service;
 using System.ComponentModel;
 
 namespace RecipeBackEnd.APIs.Controllers
@@ -13,11 +14,15 @@ namespace RecipeBackEnd.APIs.Controllers
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
+        private readonly ITokenService _Tokenservice;
 
-        public AccountsController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
+        public AccountsController(UserManager<AppUser> userManager,
+                                  SignInManager<AppUser> signInManager,
+                                  ITokenService Tokenservice)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _Tokenservice = Tokenservice;
         }
         [HttpPost("Login")]                          // Post :  /api/Accounts/Login
         public async Task<ActionResult<UserDto>> Login(LoginDto model)
@@ -31,7 +36,7 @@ namespace RecipeBackEnd.APIs.Controllers
             {
                 DisplayName = user.DisplayName,
                 Email = user.Email,
-                Token = "this will be a token"
+                Token = await _Tokenservice.CreateTokenAsync(user)
             });
         }
 
@@ -46,14 +51,14 @@ namespace RecipeBackEnd.APIs.Controllers
               UserName = model.Email.Split('@')[0]     //// Mohamed1234
           };
 
-         var Result = await _userManager.CreateAsync(user,model.Password);
+          var Result = await _userManager.CreateAsync(user,model.Password);
             if (!Result.Succeeded) return Unauthorized("Bad Request");
 
             return Ok(new UserDto()
-            { 
-            DisplayName = user.DisplayName,
-            Email = user.Email,
-            Token = "this will be a token"
+            {
+                DisplayName = user.DisplayName,
+                Email = user.Email,
+                Token = await _Tokenservice.CreateTokenAsync(user)
             });
         }
     }

@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RecipeBackEnd.Repository\RecipeBackEnd.Repository.csproj" />
+    <ProjectReference Include="..\RecipeBackEnd.Services\RecipeBackEnd.Services.csproj" />
   </ItemGroup>
 
 </Project>
