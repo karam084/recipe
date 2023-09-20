@@ -43,13 +43,15 @@ namespace RecipeBackEnd.APIs.Controllers
         [HttpPost("Register")]                          // Post :  /api/Accounts/Register
         public async Task<ActionResult<UserDto>> Register(RegisterDto model)
         {
+            if (CheckEmailExist(model.Email).Result.Value)
+                return  BadRequest("This Email already use! ");
           var user = new AppUser()
             { 
               DisplayName = model.DisplayName,
               Email = model.Email,                     // Mohamed1234@gmail.com
               PhoneNumber = model.PhoneNumber,
               UserName = model.Email.Split('@')[0]     //// Mohamed1234
-          };
+             };
 
           var Result = await _userManager.CreateAsync(user,model.Password);
             if (!Result.Succeeded) return Unauthorized("Bad Request");
@@ -60,6 +62,11 @@ namespace RecipeBackEnd.APIs.Controllers
                 Email = user.Email,
                 Token = await _Tokenservice.CreateTokenAsync(user)
             });
+        }
+        [HttpGet("emailExists")]        // Get : /api/Accounts/emailExists?email=moh12@gmail.com
+        public async Task<ActionResult<bool>> CheckEmailExist(string email)
+        { 
+        return await _userManager.FindByEmailAsync(email) is not null;
         }
     }
 }
