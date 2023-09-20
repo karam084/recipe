@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using RecipeBackEnd.APIs.Dto;
 using RecipeBackEnd.Core.Models.identity;
+using System.ComponentModel;
 
 namespace RecipeBackEnd.APIs.Controllers
 {
@@ -31,6 +32,28 @@ namespace RecipeBackEnd.APIs.Controllers
                 DisplayName = user.DisplayName,
                 Email = user.Email,
                 Token = "this will be a token"
+            });
+        }
+
+        [HttpPost("Register")]                          // Post :  /api/Accounts/Register
+        public async Task<ActionResult<UserDto>> Register(RegisterDto model)
+        {
+          var user = new AppUser()
+            { 
+              DisplayName = model.DisplayName,
+              Email = model.Email,                     // Mohamed1234@gmail.com
+              PhoneNumber = model.PhoneNumber,
+              UserName = model.Email.Split('@')[0]     //// Mohamed1234
+          };
+
+         var Result = await _userManager.CreateAsync(user,model.Password);
+            if (!Result.Succeeded) return Unauthorized("Bad Request");
+
+            return Ok(new UserDto()
+            { 
+            DisplayName = user.DisplayName,
+            Email = user.Email,
+            Token = "this will be a token"
             });
         }
     }
