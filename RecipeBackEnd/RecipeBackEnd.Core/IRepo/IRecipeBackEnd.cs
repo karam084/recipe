@@ -13,8 +13,8 @@ namespace RecipeBackEnd.Core.IRepo
         Task<List<Recipe>> GetAll();
         Task<Recipe> GetById(int Id);
         Task Add(Recipe recipe);
-        Task <Recipe> Edite(Recipe recipe);
-        void Delete(int id);
+        Task<Recipe> Edite(Recipe recipe);
+        Task Delete(int id);
         Task<List<Recipe>> Paging(int PagNum, int PagSize);
         Task<List<Recipe>> SearchByNameOrIngerdent(string Value);
         Task<List<Recipe>> SearchByNameAndIngerdent(string name, string ingredent);

@@ -30,7 +30,7 @@ namespace RecipeBackEnd.Services
             new Claim (ClaimTypes.Email , user.Email)
            };
 
-            // 2. Register Claims
+            // 2. Register Claims [issuer,audience,expires]
 
             // 3. Auth key
             var AuthKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Key"]));// covert string to array of bite

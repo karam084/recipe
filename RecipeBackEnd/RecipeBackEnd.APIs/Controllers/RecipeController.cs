@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualBasic;
@@ -22,6 +24,7 @@ namespace RecipeBackEnd.APIs.Controllers
         }
 
         [HttpGet]                                    // Get :  /api/Recipe/GetAll
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IActionResult> GetAll()
         {
             return Ok(await _recipeInterface.GetAll());
@@ -41,28 +44,33 @@ namespace RecipeBackEnd.APIs.Controllers
         [HttpPost]                                // Post : api/Recipe/Add
         public async Task<IActionResult> Add(RecipeToReturnDto recipe)
         {
-            var res = _mapper.Map<RecipeToReturnDto, Recipe>(recipe);
-            await _recipeInterface.Add(res);
-            return Ok(res);
+            if (recipe == null) return BadRequest("please add Recipe with values");
+            var result = _mapper.Map<RecipeToReturnDto, Recipe>(recipe);
+            await _recipeInterface.Add(result);
+            return Ok(result);
         }
 
         [HttpPut]                                // Put : /api/Recipe/Edite
         public async Task<IActionResult> Edite(RecipeToReturnDto recipe)
-        {
-            var res = _mapper.Map<RecipeToReturnDto, Recipe>(recipe);
-            var r = await _recipeInterface.Edite(res);
-            return Ok(r);
+        {   if (recipe == null) return BadRequest("Invaled Recip");
+            var value = _mapper.Map<RecipeToReturnDto, Recipe>(recipe);
+            var Result = await _recipeInterface.Edite(value);
+            return Ok(Result);
         }
 
         [HttpDelete("{id}")]                      // Delete : /api/Recipe/Delete/5
-        public void Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            _recipeInterface.Delete(id);
+            if (id == 0) return BadRequest("Recipe Invaled Id");
+            if (await _recipeInterface.GetById(id) == null)
+                return BadRequest("Not Found");
+            await _recipeInterface.Delete(id);
+            return Ok();
         }
 
         //Pagination
         [HttpGet("{pageSize}")]         // Get : api/Recipe/GetPagedRecipes/3?pageNumber=1
-        public async Task<IActionResult> GetPagedRecipes(int pageNumber = 1, int pageSize = 10)
+        public async Task<IActionResult> GetPagedRecipes(int pageNumber = 1, int pageSize = 3)
         {
             return Ok(await _recipeInterface.Paging(pageNumber, pageSize));
         }
@@ -74,8 +82,8 @@ namespace RecipeBackEnd.APIs.Controllers
             return Ok(await _recipeInterface.SearchByNameOrIngerdent(value));
         }
 
-        //Search by value [Name And Ingeredent]
-        [HttpPost]
+        //Search by value [Name, Ingeredent]
+        [HttpPost]                       //Get : /api/Recipe/GetAllRecipeByValue/{--, --}
         public async Task<IActionResult> GetAllRecipeByValue(string name, string inget)
         {
             return Ok(await _recipeInterface.SearchByNameAndIngerdent(name, inget));

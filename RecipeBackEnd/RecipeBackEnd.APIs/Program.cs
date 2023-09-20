@@ -32,15 +32,16 @@ namespace RecipeBackEnd.APIs
 
             //builder.Services.AddAutoMapper(M=>M.AddProfile(new MappingProfiles()));
             builder.Services.AddAutoMapper(typeof(MappingProfiles));
-            #endregion
+            
             builder.Services.AddDbContext<AppIdentityDbContext>(options =>
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("IdentityConnection"));
             });
 
             // add user
-            builder.Services.AddIdentityServices();
+            builder.Services.AddIdentityServices(builder.Configuration);
             var app = builder.Build();
+            #endregion
 
             #region Update Database
             using var Scope = app.Services.CreateScope();
@@ -65,6 +66,7 @@ namespace RecipeBackEnd.APIs
                 logger.LogError(ex,"An Error Occoured During ");  // log error
             }
             #endregion
+
             #region Configures
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -72,14 +74,10 @@ namespace RecipeBackEnd.APIs
                  app.UseSwagger();
                  app.UseSwaggerUI();
             }
-
-
-             app.UseHttpsRedirection();
-             app.UseStaticFiles();
-
-             app.UseAuthorization();
-
-
+            app.UseHttpsRedirection();
+            app.UseStaticFiles();
+            app.UseAuthorization();
+            app.UseAuthentication();
             app.MapControllers(); 
             #endregion
             app.Run();

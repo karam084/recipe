@@ -18,30 +18,36 @@ namespace RecipeBackEnd.Repository
     public class RecipeImplement : IRecipeBackEnd
     {
         private readonly StoreContext _dbcontext;
-
         public RecipeImplement(StoreContext dbcontext)
         {
             _dbcontext = dbcontext;
         }
         public async Task<List<Recipe>> GetAll()
         {
-            var res = await _dbcontext.Recipes.Include(a => a.recipeType).OrderByDescending(r=>r.Rate).ToListAsync();
-            return res;
+            List<Recipe> result = await _dbcontext.Recipes
+                .Include(a => a.recipeType)
+                .OrderByDescending(r => r.Rate)
+                .AsNoTracking()
+                .ToListAsync();
+            return result;
         }
         public async Task<Recipe> GetById(int Id)
         {
-            var res = await _dbcontext.Recipes.Include(a => a.recipeType)
-                            .FirstOrDefaultAsync(p => p.ID==Id);
-            return res;
+            Recipe result = await _dbcontext.Recipes
+                            .Include(a => a.recipeType)
+                            .FirstOrDefaultAsync(p => p.ID == Id);
+            return result;
         }
         public async Task Add(Recipe recipe)
         {
             await _dbcontext.Recipes.AddAsync(recipe);
             await _dbcontext.SaveChangesAsync();
         }
+
         public async Task<Recipe> Edite(Recipe recipe)
         {
-            var checkid = await _dbcontext.Recipes.FirstOrDefaultAsync(a => a.ID == recipe.ID);
+            var checkid = await _dbcontext.Recipes
+                                .FirstOrDefaultAsync(a => a.ID == recipe.ID);
             if (checkid != null)
             {
                 _dbcontext.Recipes.Update(checkid);
@@ -55,17 +61,16 @@ namespace RecipeBackEnd.Repository
             return checkid;
         }
 
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
             if (id != 0)
             {
-                var deleteRecipe = _dbcontext.Recipes.Find(id);
+                var deleteRecipe =await _dbcontext.Recipes.FindAsync(id);
                 _dbcontext.Recipes.Remove(deleteRecipe);
                 _dbcontext.SaveChanges();
             }
-
         }
-        public async Task<List<Recipe>> Paging(int pageNumberr = 2, int pageSizee = 2)
+        public async Task<List<Recipe>> Paging(int pageNumberr = 1, int pageSizee = 3)
         {
             var items = await _dbcontext.Recipes.Skip((pageNumberr - 1) * pageSizee)
                         .Take(pageSizee).ToListAsync();
@@ -74,7 +79,8 @@ namespace RecipeBackEnd.Repository
 
         public async Task<List<Recipe>> SearchByNameOrIngerdent(string Value)
         {
-            var result = _dbcontext.Recipes.Include(a => a.recipeType).AsNoTracking(); // high performance forget data
+            var result = _dbcontext.Recipes
+                        .Include(a => a.recipeType).AsNoTracking(); // high performance forget data
             if (!string.IsNullOrEmpty(Value))
             {
                 result = result.Where(x => x.Name.ToLower().Contains(Value) ||
@@ -82,9 +88,11 @@ namespace RecipeBackEnd.Repository
             }
             return (await result.ToListAsync());
         }
+
         public Task<List<Recipe>> SearchByNameAndIngerdent(string name, string ingredent)
         {
-            var result = _dbcontext.Recipes.Include(a => a.recipeType).AsNoTracking(); // high performance forget data
+            var result = _dbcontext.Recipes
+                         .Include(a => a.recipeType).AsNoTracking(); // high performance forget data
             if (!string.IsNullOrEmpty(name))
             {
                 result = result.Where(x => x.Name.ToLower().Contains(name));
