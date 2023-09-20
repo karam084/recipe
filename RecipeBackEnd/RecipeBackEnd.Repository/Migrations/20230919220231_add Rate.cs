@@ -5,7 +5,7 @@
 namespace RecipeBackEnd.Repository.Migrations
 {
     /// <inheritdoc />
-    public partial class Addingratetorecipe : Migration
+    public partial class addRate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

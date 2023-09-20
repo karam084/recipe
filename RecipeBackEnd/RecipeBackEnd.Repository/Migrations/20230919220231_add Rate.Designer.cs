@@ -11,8 +11,8 @@ using RecipeBackEnd.Repository.Data;
 namespace RecipeBackEnd.Repository.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20230919203852_Adding rate to recipe")]
-    partial class Addingratetorecipe
+    [Migration("20230919220231_add Rate")]
+    partial class addRate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
