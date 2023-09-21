@@ -1,23 +1,28 @@
-<h1 class=" text-center"> All Reciepes </h1>
-<div class="text-center">
-  <button class="btn btn-success m-1 text-right" (click)="displayAddRecipe=true">Add Recipe</button>
+<div class="flex justify-content-between">
+  <h2> All Reciepes </h2>
+  <p-button label="Add Recipe" (click)="displayAddRecipe=true"></p-button>
 </div>
-<div class="container text-center">
-    <p-table [value]="recipes" [paginator]="true" [rows]="10">
+<div class="container">
+    <p-table [value]="recipes" [paginator]="true" [rows]="5">
+      <ng-template pTemplate="caption">
+        <app-filter-recipe (selectCategory)="getRecipeByCategory($event)"></app-filter-recipe>
+      </ng-template>
       <ng-template pTemplate="header">
         <tr >
           <th>Name</th>
-          <th>Ingredients</th>
-          <th>Steps</th>
+          <th>price</th>
+          <th>description</th>
+          <th>category</th>
           <th>Image</th>
           <th>Actions</th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-recipe>
         <tr>
-          <td>{{ recipe.name }}</td>
-          <td>{{ recipe.ingredients }}</td>
-          <td>{{ recipe.steps }}</td>
+          <td>{{ recipe.title }}</td>
+          <td>{{ recipe.price }}</td>
+          <td>{{ recipe.description }}</td>
+          <td>{{ recipe.category }}</td>
           <td><img src="{{ recipe.image }}" height="30px"/></td>
           <td>
             <button
@@ -25,6 +30,9 @@
             icon="pi pi-pencil"
             class="p-button-rounded p-button-success p-mr-2" (click)="editRecipe(recipe)">
           </button>
+          <button pButton icon="pi pi-trash"
+          class="p-button-rounded p-button-danger"
+          (click)="deleteRecipe(recipe)"></button>
           </td>
         </tr>
       </ng-template>
@@ -34,8 +42,9 @@
 <app-add-edit-recipe [displayAddRecipe]="displayAddRecipe"
 [selectedRecipe]="selectedRecipe"
  (clickClose)="hideAddModel($event)"
- (clickAddRecipe)="saveRecipeToList($event)">
+ (clickAdd)="saveRecipeToList($event)">
  </app-add-edit-recipe>
+ <p-confirmDialog header="Delete"></p-confirmDialog>
+
+
 <p-toast position="bottom-right"></p-toast>
-
-

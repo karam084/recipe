@@ -6,14 +6,18 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
-
+import { FormsModule } from '@angular/forms';
+import { FilterRecipeComponent } from '../Components/recipe/filter-recipe/filter-recipe.component'
+import { DropdownModule } from 'primeng/dropdown';
 import { RecipeComponent } from '../Components/recipe/recipe.component';
 import { AddEditRecipeModule } from './add-edit-recipe/add-edit-recipe.module';
-
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
 
 @NgModule({
   declarations: [
     RecipeComponent,
+    FilterRecipeComponent
   ],
   imports: [
     CommonModule,
@@ -21,14 +25,17 @@ import { AddEditRecipeModule } from './add-edit-recipe/add-edit-recipe.module';
     TableModule,
     AddEditRecipeModule,
     ButtonModule,
-    ToastModule
+    ToastModule,
+    DropdownModule,
+    FormsModule,
+    ConfirmDialogModule
   ],
   exports: [
     RecipeComponent
 
   ],
   providers: [
-    MessageService
+    MessageService, ConfirmationService
   ]
 })
 export class RecipeModule { }

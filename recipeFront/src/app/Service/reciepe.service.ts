@@ -10,11 +10,14 @@ import { Recipe } from '../recipe/recipe';
   providedIn: 'root'
 })
 export class ReciepeService {
-  baseUrl = 'https://localhost:7207/api/Recipe';
+  //baseUrl = 'https://localhost:7207/api/Recipe';
+  getCategories: any;
+ // baseUrl = "../assets/recipe.json";
   constructor(private http:HttpClient) { }
-  getAllRecipes()
+  getAllRecipes(category: string)
   {
-    return this.http.get(this.baseUrl);
+    const categoryUrl = category ? `/category/${category}` : "";
+    return this.http.get<Recipe[]>(`https://fakestoreapi.com/products${categoryUrl}?sort=desc`);
   }
 
   //  AddRecipe(model:any)
@@ -47,13 +50,21 @@ export class ReciepeService {
   //   return  this.http.put(`${this.baseUrl}/${id}`,model);
   // }
 
-  saveRecipe(postData: any, selectedRecipe: any): Observable<Recipe> {
+  saveRecipe(postData: any, selectedRecipe: any) {
     if (!selectedRecipe) {
-      return this.http.post<Recipe>(`${this.baseUrl}`, postData);
+      return this.http.post(`https://fakestoreapi.com/products`, postData);
     }else{
-      return this.http.put<Recipe>(`${this.baseUrl}/${selectedRecipe.id}`, postData);
+      return this.http.put(`https://fakestoreapi.com/products/${selectedRecipe.id}`, postData);
     }
 
+  }
+
+  deleteRecipe(recipeId: number) {
+    return this.http.delete(`https://fakestoreapi.com/products/${recipeId}`);
+  }
+
+  gitCatory(): Observable<string[]>{
+    return this.http.get<string[]>(`https://fakestoreapi.com/products/categories`);
   }
 
 }

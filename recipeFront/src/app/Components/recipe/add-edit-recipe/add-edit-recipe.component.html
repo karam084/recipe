@@ -1,13 +1,14 @@
-<p-dialog header="{{modalType}} Recipe" [(visible)]="displayAddRecipe" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
-<form [formGroup]="recipeForm" class="ecipe-form ">
+<p-dialog header="{{modalType}} Recipe" [(visible)]="displayAddRecipe" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false" (onHide)="closeModel()">
+<form [formGroup]="recipeForm">
 <div class="field">
   <label class="block" for="name">Recipe Name</label>
-  <input class="form-control form-control-sm" type="text" pInputText id="name" formControlName="name"/>
-  <small class="p-error block" *ngIf="recipeForm.controls['name'].invalid && recipeForm.controls['name'].dirty" >Field is required</small>
+  <input class="form-control form-control-sm" type="text" pInputText id="title" formControlName="title"/>
+  <small class="p-error block" *ngIf="recipeForm.controls['title'].invalid && recipeForm.controls['title'].dirty" >Field is required</small>
   </div>
   <div class="field">
   <label class="block" for="price">Price</label>
   <p-inputNumber class="form-control form-control-sm" id="price" formControlName="price"> </p-inputNumber>
+  <small class="p-error block" *ngIf="recipeForm.controls['price'].invalid && recipeForm.controls['price'].dirty" >Field is required</small>
   </div>
   <div class="field">
   <label class="block" for="description">Description</label>
@@ -16,15 +17,17 @@
   <div class="field">
     <label class="block" for="image">Image</label>
     <input class="form-control form-control-sm" type="text" pInputText id="image" formControlName="image"/>
+    <small class="p-error block" *ngIf="recipeForm.controls['image'].invalid && recipeForm.controls['image'].dirty" >Field is required</small>
+  </div>
+  <div class="field">
+    <label class="block" for="category">Category</label>
+    <input class="form-control form-control-sm" type="text" pInputText id="category" formControlName="category"/>
+    <small class="p-error block" *ngIf="recipeForm.controls['image'].invalid && recipeForm.controls['image'].dirty" >Field is required</small>
     </div>
-    <div class="field">
-      <label class="block" for="category">Category</label>
-      <input class="form-control form-control-sm" type="text" pInputText id="category" formControlName="category"/>
-      </div>
 </form>
   <p-footer>
       <p-button styleClass="p-button-warning text-right" (click)="closeModel()" label="Cancel"></p-button>
-      <p-button styleClass="p-button-warning text-right" (click)="addRecipe()" label="{{modalType}}"></p-button>
+      <p-button styleClass="p-button-warning text-right" (click)="addRecipe()" label="{{modalType}}" [disabled]="recipeForm.invalid"></p-button>
 
   </p-footer>
 

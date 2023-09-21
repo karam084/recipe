@@ -13,19 +13,19 @@ export class AddEditRecipeComponent implements OnInit, OnChanges {
   @Input() displayAddRecipe: boolean = true;
   @Input() selectedRecipe: any = null;
   @Output() clickClose: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Output() clickAddRecipe: EventEmitter<any> = new EventEmitter<any>();
-  modalType = 'Add';
+  @Output() clickAdd: EventEmitter<any> = new EventEmitter<any>();
+  modalType = "Add";
   recipeForm = this.fb.group({
-    name: ['', Validators.required],
+    title: ["", Validators.required],
     price: [0, Validators.required],
-    description: [''],
-    imageUrl: ['', Validators.required],
-    category: ['', Validators.required],
+    description: [""],
+    category: ["", Validators.required],
+    image: ["", Validators.required],
 
   });
 
 
-  constructor(private fb: FormBuilder, private ReciepeService: ReciepeService, private messageService: MessageService) { }
+  constructor(private fb: FormBuilder, private recipeService: ReciepeService, private messageService: MessageService) { }
 
   ngOnInit(): void {
   }
@@ -49,14 +49,17 @@ export class AddEditRecipeComponent implements OnInit, OnChanges {
 
     addRecipe(){
      // console.log(this.recipeForm.value);
-      this.ReciepeService.saveRecipe(this.recipeForm.value, this.selectedRecipe).subscribe(
+      this.recipeService.saveRecipe(this.recipeForm.value, this.selectedRecipe).subscribe(
         (response) => {
-          this.clickAddRecipe.emit(response);
-         this.closeModel();
-          },
+          //console.log(response);
+          this.clickAdd.emit(response);
+          this.closeModel();
+          const msg = this.modalType === 'Add' ? 'Recipe Added Successfully' : 'Recipe Updated Successfully';
+           this.messageService.add({severity:'success', summary: 'Success', detail: msg});
+        },
           error => {
-            this.messageService.add({severity:'error', summary: 'Error', detail: 'Recipe Not Added'});
-            console.log(error);
+            this.messageService.add({severity:'error', summary: 'Error', detail:error});
+            //console.log(error);
           }
       );
     }
