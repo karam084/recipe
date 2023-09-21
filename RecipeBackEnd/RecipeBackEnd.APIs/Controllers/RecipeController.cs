@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualBasic;
@@ -15,71 +17,76 @@ namespace RecipeBackEnd.APIs.Controllers
     {
         private readonly IRecipeBackEnd _recipeInterface;
         private readonly IMapper _mapper;
-
         public RecipeController(IRecipeBackEnd recipeInterface, IMapper mapper)
         {
             _recipeInterface = recipeInterface;
             _mapper = mapper;
         }
-        // GET: api/<RecipeController>
-        [HttpGet]
-        public async Task<IActionResult> GetAllRecipe()
+
+        [HttpGet]                                    // Get :  /api/Recipe/GetAll
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<IActionResult> GetAll()
         {
-            return Ok(await _recipeInterface.GetAllRecipe());
+            return Ok(await _recipeInterface.GetAll());
         }
 
-        // GET api/<RecipeController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("{id}")]                           // Get :  /api/Recipe/Get/1
+        public async Task<ActionResult<RecipeToReturnDto>> Get(int id)
         {
-            return "value";
+            if (id == 0)
+                return BadRequest("Id invalid");
+            var Result = await _recipeInterface.GetById(id);
+            if (Result == null)
+                return BadRequest("Recipe Not Found");
+            return Ok(Result);
         }
 
-        // POST api/<RecipeController>
-        [HttpPost]
-        public async Task<IActionResult> AddRecipe(Recipe recipe)
-
+        [HttpPost]                                // Post : api/Recipe/Add
+        public async Task<IActionResult> Add(RecipeToReturnDto recipe)
         {
-
-            await _recipeInterface.AddRecipe(recipe);
-            return Ok(_mapper.Map<Recipe, RecipeToReturnDto>(recipe));
-
-        }
-        //// PUT api/<RecipeController>/5
-        [HttpPut("{id}")]
-        public IActionResult EditeRecipe(int id, Recipe recipe)
-        {
-            //return Ok(_recipeInterface.EditeRecipe(recipe));
-            _recipeInterface.EditeRecipe(recipe);
-            return Ok(_mapper.Map<Recipe, RecipeToReturnDto>(recipe));
+            if (recipe == null) return BadRequest("please add Recipe with values");
+            var result = _mapper.Map<RecipeToReturnDto, Recipe>(recipe);
+            await _recipeInterface.Add(result);
+            return Ok(result);
         }
 
-        // DELETE api/<RecipeController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-            _recipeInterface.DeleteRecipe(id);
+        [HttpPut]                                // Put : /api/Recipe/Edite
+        public async Task<IActionResult> Edite(RecipeToReturnDto recipe)
+        {   if (recipe == null) return BadRequest("Invaled Recip");
+            var value = _mapper.Map<RecipeToReturnDto, Recipe>(recipe);
+            var Result = await _recipeInterface.Edite(value);
+            return Ok(Result);
         }
 
-        //Search
-        [HttpGet("{name}")]
-        public async Task<IActionResult> Search(string Name)
+        [HttpDelete("{id}")]                      // Delete : /api/Recipe/Delete/5
+        public async Task<IActionResult> Delete(int id)
         {
-            return Ok(await _recipeInterface.GetAllRecipeSearch(Name));
+            if (id == 0) return BadRequest("Recipe Invaled Id");
+            if (await _recipeInterface.GetById(id) == null)
+                return BadRequest("Not Found");
+            await _recipeInterface.Delete(id);
+            return Ok();
         }
 
-        //Search
-        [HttpGet("{Integ}")]
-        public async Task<IActionResult> Searchinteg(string integ)
+        //Pagination
+        [HttpGet("{pageSize}")]         // Get : api/Recipe/GetPagedRecipes/3?pageNumber=1
+        public async Task<IActionResult> GetPagedRecipes(int pageNumber = 1, int pageSize = 3)
         {
-            return Ok(await _recipeInterface.GetAllRecipeSearchIntegred(integ));
+            return Ok(await _recipeInterface.Paging(pageNumber, pageSize));
         }
 
-        //Paging
-        [HttpGet("{pageSize}")]
-        public async Task<IActionResult> GetPagedRecipes(int pageNumber = 1, int pageSize = 10)
+        //Search by value [Name OR Ingeredent]
+        [HttpPost("{Value}")]                     //Post : /api/Recipe/searchValue/k
+        public async Task<IActionResult> SearchValue(string value)
         {
-             return Ok(await _recipeInterface.Paging(pageNumber, pageSize));
+            return Ok(await _recipeInterface.SearchByNameOrIngerdent(value));
+        }
+
+        //Search by value [Name, Ingeredent]
+        [HttpPost]                       //Get : /api/Recipe/GetAllRecipeByValue/{--, --}
+        public async Task<IActionResult> GetAllRecipeByValue(string name, string inget)
+        {
+            return Ok(await _recipeInterface.SearchByNameAndIngerdent(name, inget));
         }
     }
 

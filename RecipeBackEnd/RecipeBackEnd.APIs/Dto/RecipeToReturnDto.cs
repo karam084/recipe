@@ -1,20 +1,22 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using RecipeBackEnd.Core.Models;
 
 namespace RecipeBackEnd.APIs.Dto
 {
     public class RecipeToReturnDto
     {
-        
-        public int RecipeID { get; set; }
-        [MinLength(3, ErrorMessage = "The Minimum Lenght More Than 3 characters")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
         public string Name { get; set; }
 
-        [MinLength(1, ErrorMessage = "The Minimum Lenght More Than 1 characters")]
-        public string Intgredients { get; set; }
+        public string Ingredients { get; set; }
 
-        [MinLength(1, ErrorMessage = "The Minimum Lenght More Than 1 characters")]
         public string Steps { get; set; }
         public string? Image { get; set; }
+        public int Rate { get; set; }
+
+        //////////relation Between Recipe and Category of Recipe
+        public int recipeTypeId { get; set; }        /// foreign key
     }
 }

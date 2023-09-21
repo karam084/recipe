@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.VisualBasic;
 using RecipeBackEnd.Core.IRepo;
 using RecipeBackEnd.Core.Models;
 using RecipeBackEnd.Repository.Data;
@@ -8,75 +10,99 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
+using static Azure.Core.HttpHeader;
 
 namespace RecipeBackEnd.Repository
 {
     public class RecipeImplement : IRecipeBackEnd
     {
         private readonly StoreContext _dbcontext;
-
         public RecipeImplement(StoreContext dbcontext)
         {
             _dbcontext = dbcontext;
         }
-        public async Task<List<Recipe>> GetAllRecipe()
+        public async Task<List<Recipe>> GetAll()
         {
-            var res = await _dbcontext.BackEndRecipes.ToListAsync();
-            return res;
+            List<Recipe> result = await _dbcontext.Recipes
+                .Include(a => a.recipeType)
+                .OrderByDescending(r => r.Rate)
+                .AsNoTracking()
+                .ToListAsync();
+            return result;
         }
-        public async Task AddRecipe(Recipe recipe)
+        public async Task<Recipe> GetById(int Id)
         {
-             await _dbcontext.BackEndRecipes.AddAsync(recipe);
-             await _dbcontext.SaveChangesAsync();
-
+            Recipe result = await _dbcontext.Recipes
+                            .Include(a => a.recipeType)
+                            .FirstOrDefaultAsync(p => p.ID == Id);
+            return result;
+        }
+        public async Task Add(Recipe recipe)
+        {
+            await _dbcontext.Recipes.AddAsync(recipe);
+            await _dbcontext.SaveChangesAsync();
         }
 
-        public async Task EditeRecipe(Recipe recipe)
+        public async Task<Recipe> Edite(Recipe recipe)
         {
-            var checkid = await _dbcontext.BackEndRecipes.FindAsync(recipe.ID);
+            var checkid = await _dbcontext.Recipes
+                                .FirstOrDefaultAsync(a => a.ID == recipe.ID);
             if (checkid != null)
             {
-                 _dbcontext.BackEndRecipes.Update(recipe);
-                 await _dbcontext.SaveChangesAsync();
+                _dbcontext.Recipes.Update(checkid);
+                _dbcontext.Entry(checkid).CurrentValues.SetValues(recipe);
+                await _dbcontext.SaveChangesAsync();
             }
+            else
+            {
+                return null;
+            }
+            return checkid;
         }
 
-
-        public void DeleteRecipe(int id)
+        public async Task Delete(int id)
         {
             if (id != 0)
             {
-                var deleteRecipe = _dbcontext.BackEndRecipes.Find(id);
-                _dbcontext.BackEndRecipes.Remove(deleteRecipe);
+                var deleteRecipe =await _dbcontext.Recipes.FindAsync(id);
+                _dbcontext.Recipes.Remove(deleteRecipe);
                 _dbcontext.SaveChanges();
             }
         }
-
-
-        public async Task<List<Recipe>> GetAllRecipeSearch(string name)
+        public async Task<List<Recipe>> Paging(int pageNumberr = 1, int pageSizee = 3)
         {
-                // return only result of name
-            //var res = await _dbcontext.BackEndRecipes.Where(x => x.Name.ToLower()
-            //    .Equals(name.ToLower())).ToListAsync();
-            //return (res);
-            var res = await _dbcontext.BackEndRecipes.Where(x => x.Name.ToLower()
-                .Contains(name.ToLower())).ToListAsync();
-            return (res);
-
-        }
-
-        public async Task<List<Recipe>> GetAllRecipeSearchIntegred(string integ)
-        {
-                var result = await _dbcontext.BackEndRecipes.Where(x => x.Intgredients.ToLower()
-                .Contains(integ.ToLower())).ToListAsync();
-                  return (result);
-        }
-
-        public async Task<List<Recipe>> Paging(int pageNumberr = 2, int pageSizee = 2)
-        {
-            var items = await _dbcontext.BackEndRecipes.Skip((pageNumberr - 1) * pageSizee)
-                      .Take(pageSizee).ToListAsync();
+            var items = await _dbcontext.Recipes.Skip((pageNumberr - 1) * pageSizee)
+                        .Take(pageSizee).ToListAsync();
             return items;
+        }
+
+        public async Task<List<Recipe>> SearchByNameOrIngerdent(string Value)
+        {
+            var result = _dbcontext.Recipes
+                        .Include(a => a.recipeType).AsNoTracking(); // high performance forget data
+            if (!string.IsNullOrEmpty(Value))
+            {
+                result = result.Where(x => x.Name.ToLower().Contains(Value) ||
+                                           x.Ingredients.ToLower().Contains(Value));
+            }
+            return (await result.ToListAsync());
+        }
+
+        public Task<List<Recipe>> SearchByNameAndIngerdent(string name, string ingredent)
+        {
+            var result = _dbcontext.Recipes
+                         .Include(a => a.recipeType).AsNoTracking(); // high performance forget data
+            if (!string.IsNullOrEmpty(name))
+            {
+                result = result.Where(x => x.Name.ToLower().Contains(name));
+            }
+            if (!string.IsNullOrEmpty(name))
+            {
+                result = result.Where(x => x.Ingredients.ToLower().Contains(ingredent));
+            }
+            return result.ToListAsync();
+
         }
     }
 }

@@ -20,3 +20,7 @@ F:\InternShip\FullStackRecipeNew\UI\recipe\RecipeBackEnd\RecipeBackEnd.Services\
 F:\InternShip\FullStackRecipeNew\UI\recipe\RecipeBackEnd\RecipeBackEnd.Services\obj\Debug\net7.0\refint\RecipeBackEnd.Services.dll
 F:\InternShip\FullStackRecipeNew\UI\recipe\RecipeBackEnd\RecipeBackEnd.Services\obj\Debug\net7.0\RecipeBackEnd.Services.pdb
 F:\InternShip\FullStackRecipeNew\UI\recipe\RecipeBackEnd\RecipeBackEnd.Services\obj\Debug\net7.0\ref\RecipeBackEnd.Services.dll
+F:\InternShip\FullStackRecipeNew\UI\recipe\RecipeBackEnd\RecipeBackEnd.Services\bin\Debug\net7.0\RecipeBackEnd.Core.dll
+F:\InternShip\FullStackRecipeNew\UI\recipe\RecipeBackEnd\RecipeBackEnd.Services\bin\Debug\net7.0\RecipeBackEnd.Core.pdb
+F:\InternShip\FullStackRecipeNew\UI\recipe\RecipeBackEnd\RecipeBackEnd.Services\obj\Debug\net7.0\RecipeBackEnd.Services.csproj.AssemblyReference.cache
+F:\InternShip\FullStackRecipeNew\UI\recipe\RecipeBackEnd\RecipeBackEnd.Services\obj\Debug\net7.0\RecipeBackEnd.Services.csproj.CopyComplete

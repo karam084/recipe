@@ -1,14 +1,18 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using RecipeBackEnd.APIs.Dto.Helpers;
+using RecipeBackEnd.APIs.Extension;
 using RecipeBackEnd.Core.IRepo;
+using RecipeBackEnd.Core.Models.identity;
 using RecipeBackEnd.Repository;
 using RecipeBackEnd.Repository.Data;
+using RecipeBackEnd.Repository.Data.identity;
 
 namespace RecipeBackEnd.APIs
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +23,7 @@ namespace RecipeBackEnd.APIs
             // Learn more about configuring Swagger/OpenAPI at /* https://aka.ms/aspnetcore/swashbuckle */
              builder.Services.AddEndpointsApiExplorer();
              builder.Services.AddSwaggerGen();
+
              builder.Services.AddDbContext<StoreContext>(Options =>
             {
                  Options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
@@ -26,10 +31,17 @@ namespace RecipeBackEnd.APIs
              builder.Services.AddScoped<IRecipeBackEnd, RecipeImplement>();
 
             //builder.Services.AddAutoMapper(M=>M.AddProfile(new MappingProfiles()));
-             builder.Services.AddAutoMapper(typeof(MappingProfiles));
-            #endregion
+            builder.Services.AddAutoMapper(typeof(MappingProfiles));
+            
+            builder.Services.AddDbContext<AppIdentityDbContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("IdentityConnection"));
+            });
 
+            // add user
+            builder.Services.AddIdentityServices(builder.Configuration);
             var app = builder.Build();
+            #endregion
 
             #region Update Database
             using var Scope = app.Services.CreateScope();
@@ -39,14 +51,20 @@ namespace RecipeBackEnd.APIs
             try
             {
                 var dbContext = Services.GetRequiredService<StoreContext>(); //Ask clr for create object
-                 dbContext.Database.MigrateAsync();  // Update Database
+                await dbContext.Database.MigrateAsync();  // Update Database
+
+                var IdentityDbcontext = Services.GetRequiredService<AppIdentityDbContext>();
+                await IdentityDbcontext.Database.MigrateAsync(); // Update Database
+
+                // create one user seed
+                var UserManger = Services.GetRequiredService<UserManager<AppUser>>();
+                await AppIdenetityDbContextSeed.SeedUserAsync(UserManger);
             }
             catch (Exception ex)
             {
                 var logger = LoggerFactory.CreateLogger<Program>(); //work in program
                 logger.LogError(ex,"An Error Occoured During ");  // log error
             }
-
             #endregion
 
             #region Configures
@@ -56,17 +74,12 @@ namespace RecipeBackEnd.APIs
                  app.UseSwagger();
                  app.UseSwaggerUI();
             }
-
-
-             app.UseHttpsRedirection();
-             app.UseStaticFiles();
-
-             app.UseAuthorization();
-
-
+            app.UseHttpsRedirection();
+            app.UseStaticFiles();
+            app.UseAuthorization();
+            app.UseAuthentication();
             app.MapControllers(); 
             #endregion
-
             app.Run();
         }
     }

@@ -8,8 +8,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = RecipeBackEnd.Core
-<<<<<<< HEAD
-build_property.ProjectDir = /home/kezz/recipe/RecipeBackEnd/RecipeBackEnd.Core/
-=======
 build_property.ProjectDir = F:\InternShip\FullStackRecipeNew\UI\recipe\RecipeBackEnd\RecipeBackEnd.Core\
->>>>>>> eda18c293187e2a8f0b2c52acea231c755025369
