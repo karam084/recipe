@@ -53,10 +53,7 @@ export class RecipeComponent implements OnInit, OnDestroy {
   }
 
   saveRecipeToList(newData: any){
-    //  this.recipes.unshift(newData);
-      //this.getAllRecipes();
-
-    if(this.selectedRecipe && newData.id === this.selectedRecipe.id){
+     if(this.selectedRecipe && newData.id === this.selectedRecipe.id){
       const recipeIndex = this.recipes.findIndex(data => data.id === newData.id);
       this.recipes[recipeIndex] = newData;
 
@@ -85,7 +82,6 @@ export class RecipeComponent implements OnInit, OnDestroy {
           },
           error => {
             this.messageService.add({severity:'error', summary: 'Error', detail:error});
-            //console.log(error);
           }
         );
 

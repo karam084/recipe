@@ -48,10 +48,8 @@ export class AddEditRecipeComponent implements OnInit, OnChanges {
     }
 
     addRecipe(){
-     // console.log(this.recipeForm.value);
       this.recipeService.saveRecipe(this.recipeForm.value, this.selectedRecipe).subscribe(
         (response) => {
-          //console.log(response);
           this.clickAdd.emit(response);
           this.closeModel();
           const msg = this.modalType === 'Add' ? 'Recipe Added Successfully' : 'Recipe Updated Successfully';
@@ -59,7 +57,6 @@ export class AddEditRecipeComponent implements OnInit, OnChanges {
         },
           error => {
             this.messageService.add({severity:'error', summary: 'Error', detail:error});
-            //console.log(error);
           }
       );
     }
