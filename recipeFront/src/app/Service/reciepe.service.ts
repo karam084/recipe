@@ -15,23 +15,23 @@ export class ReciepeService {
   getAllRecipes(category: string)
   {
     const categoryUrl = category ? `/category/${category}` : "";
-    return this.http.get<Recipe[]>(`https://fakestoreapi.com/products${categoryUrl}?sort=desc`);
+    return this.http.get<Recipe[]>(`https://localhost:7207/api/Recipe/GetAll`);
   }
   saveRecipe(postData: any, selectedRecipe: any) {
     if (!selectedRecipe) {
-      return this.http.post(`https://fakestoreapi.com/products`, postData);
+      return this.http.post(`https://localhost:7207/api/Recipe/Add`, postData);
     }else{
-      return this.http.put(`https://fakestoreapi.com/products/${selectedRecipe.id}`, postData);
+      return this.http.put(`https://localhost:7207/api/Recipe/Edite/${selectedRecipe.id}`, postData);
     }
 
   }
 
   deleteRecipe(recipeId: number) {
-    return this.http.delete(`https://fakestoreapi.com/products/${recipeId}`);
+    return this.http.delete(`https://localhost:7207/api/Recipe/Delete/25/${recipeId}`);
   }
 
   gitCatory(): Observable<string[]>{
-    return this.http.get<string[]>(`https://fakestoreapi.com/products/categories`);
+    return this.http.get<string[]>(`https://localhost:7207/api/Recipe/searchValue/veget/categories`);
   }
 
 }

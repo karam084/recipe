@@ -10,6 +10,7 @@ import { MatButtonModule}          from '@angular/material/button';
 //import { AddEditComponent }        from './Components/add-edit/add-edit.component';
 import { MatFormFieldModule }      from '@angular/material/form-field';
 import { RecipeModule } from './recipe/recipe.module';
+import { ReactiveFormsModule } from '@angular/forms';
 //import { AddEditRecipeComponent} from './Components/recipe/add-edit-recipe/add-edit-recipe.component';
 
 @NgModule({  declarations: [
@@ -26,7 +27,8 @@ import { RecipeModule } from './recipe/recipe.module';
     MatDialogModule,
     MatButtonModule,
     MatFormFieldModule,
-    RecipeModule
+    RecipeModule,
+    ReactiveFormsModule
 
   ],
   providers: [],
